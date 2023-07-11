@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Example Content
+title: Study Content
 description: >
   Howdy! This is an example blog post that shows several types of HTML content supported in this theme.
 sitemap: false
