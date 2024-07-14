@@ -8,3 +8,123 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 ## 데이터 입·출력 구현 2
 
 #### **뷰(View)**
+
+- 사용자에게 접근이 허용된 자료만을 제한적으로 보여주기 위해 **<span style="background-color:#fff5b1">하나 이상의 기본 테이블로부터 유도된</span>**, 이름을 가지는 **<span style="background-color:#fff5b1">가상 테이블</span>**
+- 정의된 기본 테이블이나 뷰를 삭제하면 그 테이블이나 뷰를 기초로 정의된 다른 뷰도 자동으로 삭제됨
+- 뷰를 정의할 때는 CREATE문, 제거할 때는 DROP문을 사용함
+
+#### **파티션의 종류**
+
+<table>
+<tr>
+<th style="white-space: pre;">범위 분할<br/>(Range<br/>Partitioning)</th>
+<td style="white-space: normal;">지정한 열의 값을 기준으로 분할함</td>
+</tr>
+<tr>
+<th style="white-space: pre;">해시 분할<br/>(Hash<br/>Partitioning)</th>
+<td style="white-space: normal;">
+<ul>
+<li>해시 함수를 적용한 결과 값에 따라 데이터를 분할함</li>
+<li>특정 파티션에 데이터가 집중되는 범위 분할의 단점을 보완한 것으로, 데이터를 고르게 분산할 때 유용함</li>
+<li>고객번호, 주민번호 등과 같이 데이터가 고른 컬럼에 효과적임</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th style="white-space: pre;">조합 분할<br/>(Composite<br/>Partitioning)</th>
+<td style="white-space: normal;">
+<ul>
+<li>범위 분할로 분할한 다음 해시 함수를 적용하여 다시 분할하는 방식</li>
+<li>범위 분할한 파티션이 너무 커서 관리가 어려울 때 유용함</li>
+</ul>
+</td>
+</tr>
+</table>
+
+#### **분산 데이터베이스의 목표**
+
+- **<span style="background-color:#fff5b1">위치 투명성(Location Transparency)</span>** : 액세스하려는 데이터베이스의 실제 위치를 알 필요 없이 단지 데이터베이스의 논리적인 명칭만으로 액세스할 수 있음
+- **<span style="background-color:#fff5b1">중복 투명성(Replication Transparency)</span>** : 동일 데이터가 여러 곳에 중복되어 있더라도 사용자는 마치 하나의 데이터만 존재하는 것처럼 사용하고, 시스템은 자동으로 여러 자료에 대한 작업을 수행함
+- **<span style="background-color:#fff5b1">병행 투명성(Concurrency Transparency)</span>** : 분산 데이터베이스와 관련된 다수의 트랜잭션들이 동시에 실현되더라도 그 트랜잭션의 결과는 영향을 받지 않음
+- **<span style="background-color:#fff5b1">장애 투명성(Failure Transparency)</span>** : 트랜잭션, DBMS, 네트워크, 컴퓨터 장애에도 불구하고 트랜잭션을 정확하게 처리함
+
+#### **RTO/RPO**
+
+<table>
+<tr>
+<th style="white-space: pre;">RTO(Recovery<br/>Time Objective,<br/>목표 복구 시간)</th>
+<td style="white-space: normal;">비상사태 또는 업무 중단 시점으로부터 복구되어 가동될 때까지의 소요 시간을 의미함</td>
+</tr>
+<tr>
+<th style="white-space: pre;">RPO(Recovery<br/>Point Objective,<br/>목표 복구 시점)</th>
+<td style="white-space: normal;">비상사태 또는 업무 중단 시점으로부터 데이터를 복구할 수 있는 기준점을 의미함</td>
+</tr>
+</table>
+
+#### **암호화(Encryption)**
+
+- 데이터를 보낼 때 송신자가 지정한 수신자 이외에는 그 내용을 알 수 없도록 평문을 암호문으로 변환하는 것
+- **<span style="background-color:#fff5b1">암호화(Encryption) 과정</span>** : 암호화되지 않은 평문을 암호문으로 바꾸는 과정
+- **<span style="background-color:#fff5b1">복호화(Decryption) 과정</span>** : 암호문을 원래의 평문으로 바꾸는 과정
+- **<span style="background-color:#fff5b1">암호화 기법</span>**
+  * 개인키 암호 방식(Private Key Encryption)
+  * 공개키 암호 방식(Public Key Encryption)
+
+#### **임의 접근통제(DAC; Discretionary Access Control)**
+
+- **<span style="background-color: #fff5b1">데이터에 접근하는 사용자의 신원에 따라 접근 권한을 부여하는 방식</span>**
+- 데이터 소유자가 접근통제 권한을 지정하고 제어
+- 객체를 생성한 사용자가 생성된 객체에 대한 모든 권한을 부여받고, 부여된 권한을 다른 사용자에게 허가할 수 있음
+
+#### **강제 접근통제(MAC; Mandatory Access Control)**
+
+- **<span style="background-color:#fff5b1">주체와 객체의 등급을 비교하여 접근 권한을 부여하는 방식</span>**
+- 시스템이 접근통제 권한을 지정
+- 데이터베이스 객체별로 보안 등급을 부여할 수 있음
+- 사용자별로 인가 등급을 부여할 수 있음
+
+#### **DAS(Direct Attached Storage)**
+
+- **<span style="background-color:#fff5b1">서버와 저장장치를 전용 케이블로 직접 연결하는 방식</span>**
+- 일반 가정에서 컴퓨터에 외장하드를 연결하는 것이 여기에 해당됨
+- 직접 연결 방식이므로 다른 서버에서 접근할 수 없고 파일을 공유할 수 없음
+
+#### **SAN(Storage Area Networ)**
+
+- DAS의 빠른 처리와 NAS의 파일 공유 장점을 혼합한 방식으로, **<span style="background-color:#fff5b1">서버와 저장장치를 연결하는 전용 네트워크를 별도로 구성하는 방식</span>**
+- 파이버 채널(Fibre Channel, 광 채널) 스위치를 이용하여 네트워크를 구성
+- 파이버 채널 스위치는 서버와 저장장치를 광케이블로 연결하므로 처리 속도가 빠름
+- 서버들이 저장장치 및 파일을 공유할 수 있음
+
+#### **스택(Stack)**
+
+- **<span style="background-color:#fff5b1">리스트의 한쪽 끝으로만 자료의 삽입, 삭제 작업이 이루어지는 자료구조</span>**
+- 후입선출(LIFO; Last In First Out) 방식으로 자료를 처리
+- 저장할 기억 공간이 없는 상태에서 데이터가 삽입되면 오버플로(Overflow)가 발생
+- 삭제할 데이터가 없는 상태에서 데이터를 삭제하면 언더플로(Underflow)가 발생
+
+#### **방향/무방향 그래프의 최대 간선 수**
+
+- **방향 그래프의 최대 간선 수** : n(n-1)
+- **무방향 그래프에서 최대 간선 수** : n(n-1)/2
+
+#### **트리(Tree)**
+
+- **<span style="background-color:#fff5b1">정점(Node, 노드)과 선분(Branch, 가지)을 이용하여 사이클을 이루지 않도록 구성한 그래프(Graph)의 특수한 형태</span>**
+- 하나의 기억 공간을 노드(Node)라고 하며, 노드와 노드를 연결하는 선을 링크(Link)라고 함
+
+#### **트리 관련 용어**
+
+- **노드(Node)** : 트리의 기본 요소로서 자료 항목과 다른 항목에 대한 가지(Branch)를 합친 것
+- **근 노드(Root Node)** : 트리의 맨 위에 있는 노드
+- **디그리(Degree, 차수)** : 각 노드에서 뻗어나온 가지의 수
+- **단말 노드(Terminal Node) = 잎 노드(Leaf Node)** : 자식이 하나도 없는 노드, 즉 Degree가 0인 노드
+- **Level** : 근 노드의 Level을 1로 가정한 후 어떤 Level이 L이면 자식 노드는 L+1
+- **깊이(Depth, Height)** : Tree에서 노드가 가질 수 있는 최대의 레벨
+- **숲(Forest)** : 여러 개의 트리가 모여 있는 것
+- **트리의 디그리** : 노드들의 디그리 중에서 가장 많은 수
+
+#### **Preorder 운행법**
+
+- 이진 트리를 **<span style="background-color:#fff5b1">Root → Left → Right 순으로 운행하며 노드들을 찾아가는 방법</span>**
+- **Preorder 운행법의 방문 순서
