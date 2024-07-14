@@ -127,4 +127,4 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 #### **Preorder 운행법**
 
 - 이진 트리를 **<span style="background-color:#fff5b1">Root → Left → Right 순으로 운행하며 노드들을 찾아가는 방법</span>**
-- **Preorder 운행법의 방문 순서
+- **Preorder 운행법의 방문 순서**
