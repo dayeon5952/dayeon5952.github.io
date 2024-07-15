@@ -1,0 +1,247 @@
+---
+title: "[정보처리기사] 서버 프로그램 구현 1"
+date: 2024-07-03 00:34:00 +09:00
+categories: [정보처리기사]
+tags: [정보처리기사, 서버 프로그램 구현]
+---
+
+## 서버 프로그램 구현 1
+
+#### **모듈화(Modularity)**
+
+- 소프트웨어의 성능 향상, 시스템의 수정 및 재사용, 유지 관리 등이 용이하도록 **<span style="background-color:#fff5b1">시스템의 기능들을 모듈 단위로 나누는 것</span>**
+- 모듈 간 결합도(Coupling)의 최소화와 모듈 내 요소들의 응집도(Cohesion)를 최대화하는 것이 목표
+
+#### **추상화(Abstraction)**
+
+- 문제의 **<span style="background-color:#fff5b1">전체적이고 포괄적인 개념을 설계</span>**한 후 차례로 세분화하여 **<span style="background-color:#fff5b1">구체화시켜 나가는 것</span>**
+- **추상화의 유형**
+<table>
+<tr>
+<th style="white-space: pre;">과정 추상화</th>
+<td style="white-space: normal;">자세한 수행 과정을 정의하지 않고, 전반적인 흐름만 파악할 수 있게 설계하는 방법</td>
+</tr>
+<tr>
+<th style="white-space: pre;">자료 추상화</th>
+<td style="white-space: normal;">데이터의 세부적인 속성이나 용도를 정의하지 않고, 데이터 구조를 대표할 수 있는 표현으로 대체하는 방법</td>
+</tr>
+<tr>
+<th style="white-space: pre;">제어 추상화</th>
+<td style="white-space: normal;">이벤트 발생의 정확한 절차나 방법을 정의하지 않고, 대표할 수 있는 표현으로 대체하는 방법</td>
+</tr>
+</table>
+
+#### **정보 은닉(Information Hiding)**
+
+- **<span style="background-color:#fff5b1">한 모듈 내부에 포함된 절차와 자료들의 정보가 감추어져 다른 모듈이 접근하거나 변경하지 못하도록 하는 기법</span>**
+- 정보 은닉을 통해 모듈을 독립적으로 수행할 수 있음
+- 하나의 모듈이 변경되더라도 다른 모듈에 영향을 주지 않으므로 수정, 시험, 유지보수가 용이
+
+#### **상위 설계와 하위 설계**
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th class="text-center">상위 설계</th>
+<th class="text-center">하위 설계</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="white-space: pre;">별칭</td>
+<td style="white-space: normal;">아키텍처 설계, 예비 설계</td>
+<td style="white-space: normal;">모듈 설계, 상세 설계</td>
+</tr>
+<tr>
+<td style="white-space: pre;">설계 대상</td>
+<td style="white-space: normal;">시스템의 전체적인 구조</td>
+<td style="white-space: normal;">시스템의 내부 구조 및 행위</td>
+</tr>
+<tr>
+<td style="white-space: pre;">세부 목록</td>
+<td style="white-space: normal;">구조, DB, 인터페이스</td>
+<td style="white-space: normal;">컴포넌트, 자료 구조, 알고리즘</td>
+</tr>
+</tbody>
+</table>
+
+#### **소프트웨어 아키텍처의 품질 속성**
+
+- 소프트웨어 아키텍처가 이해 관계자들이 요구하는 수준의 품질을 유지 및 보장할 수 있게 설계되었는지 확인하기 위해 품질 평가 요소들을 구체화 시켜 놓은 것
+- **품질 평가 요소의 종류**
+<table>
+<tr>
+<th style="white-space: pre;">시스템 측면</th>
+<td style="white-space: normal;">성능, 보안, 가용성, 기능성, 사용성, 변경 용이성, 확장성 등</td>
+</tr>
+<tr>
+<th style="white-space: pre;">비즈니스 측면</th>
+<td style="white-space: normal;">시장 적시성, 비용과 혜택, 예상 시스템 수명, 목표 시장, 공개 일정 등</td>
+</tr>
+<tr>
+<th style="white-space: pre;">아키텍처 측면</th>
+<td style="white-space: normal;">개념적 무결성, 정확성, 완결성, 구축 가능성, 변경성, 시험성 등</td>
+</tr>
+</table>
+
+#### **협약(Contract)에 의한 설계**
+
+- 협약에 의한 설계는 컴포넌트를 설계할 때 클래스에 대한 여러 가정을 공유할 수 있도록 명세한 것
+- 컴포넌트에 대한 정확한 인터페이스를 명세
+- **명세에 포함될 조건**
+<table>
+<tr>
+<th style="white-space:pre;">선행 조건<br/>(Precondition)</th>
+<td style="white-space:normal;">오퍼레이션이 호출되기 전에 참이 되어야 할 조건</td>
+</tr>
+<tr>
+<th style="white-space:pre;">결과 조건<br/>(Postcondition)</th>
+<td style="white-space:normal;">오퍼레이션이 수행된 후 만족되어야 할 조건</td>
+</tr>
+<tr>
+<th style="white-space:pre;">불변 조건<br/>(Invariant)</th>
+<td style="white-space:normal;">오퍼레이션이 실행되는 동안 항상 만족되어야 할 조건</td>
+</tr>
+</table>
+
+#### **레이어 패턴(Layers Pattern)**
+
+- **<span style="background-color:#fff5b1">시스템을 계층으로 구분하여 구성</span>**하는 고전적인 방법의 패턴
+- 하위 계층은 상위 계층에 대한 서비스 제공자가 되고, 상위 계층은 하위 계층의 클라이언트가 됨
+- 서로 마주보는 두 개의 계층 사이에서만 상호작용이 이루어짐
+- 대표적인 OSI 참조 모델이 있음
+
+#### **클라이언트-서버 패턴(Client-Server Pattern)**
+
+- **<span style="background-color:#fff5b1">하나의 서버 컴포넌트와 다수의 클라이언트 컴포넌트로 구성</span>**되는 패턴
+- 사용자가 클라이언트를 통해 서버에 요청하면 클라이언트가 응답을 받아 사용자에게 제공하는 방식
+
+#### **파이프-필터 패턴(Pipe-Filter Pattern)**
+
+- **<span style="background-color:#fff5b1">데이터 스트림 절차의 각 단계를 필터로 캡슐화하여 파이프를 통해 전송</span>**하는 패턴
+- 앞 시스템의 처리 결과물을 파이프를 통해 전달받아 처리한 후 그 결과물을 다시 파이프를 통해 다음 시스템으로 넘겨주는 패턴을 반복
+- 데이터 변환, 버퍼링, 동기화 등에 주로 사용
+- 대표적으로 UNIX의 쉘(Shell)
+
+#### **모델-뷰-컨트롤러 패턴(Model-View-Controller Pattern)**
+
+- **<span style="background-color:#fff5b1">서브시스템을 모델, 뷰, 컨트롤러로 구조화</span>**하는 패턴
+- 컨트롤러가 사용자의 요청을 받으면 핵심 기능과 데이터를 보관하는 모델을 이용하여 뷰에 정보를 출력하는 구조
+- 여러 개의 뷰를 만들 수 있음
+- 한 개의 모델에 대해 여러 개의 뷰를 필요로 하는 대화형 애플리케이션에 적합
+
+#### **기타 패턴**
+
+- **<span style="background-color:#fff5b1">마스터-슬레이브 패턴(Master-Slave Pattern)</span>**<br/>
+  슬레이브 컴포넌트에서 처리된 결과물을 다시 돌려받는 방식으로 작업을 수행하는 패턴
+- **<span style="background-color:#fff5b1">브로커 패턴(Broker Pattern)</span>**<br/>
+  사용자가 원하는 서비스와 특성을 브로커 컴포넌트에 요청하면 브로커 컴포넌트가 요청에 맞는 컴포넌트와 사용자를 연결해주는 패턴
+- **<span style="background-color:#fff5b1">피어-투-피어 패턴(Peer-To-Peer Pattern)</span>**<br/>
+  피어(Peer)라 불리는 하나의 컴포넌트가 클라이언트가 될수도, 서버가 될 수도 있는 패턴
+- **<span style="background-color:#fff5b1">이벤트-버스 패턴(Event-Bus Pattern)</span>**<br/>
+  소스가 특정 채널에 이벤트 메시지를 발행(Publish)하면, 해당 채널을 구독(Subscribe)한 리스너(Listener)들이 메시지를 받아 이벤트를 처리하는 패턴
+- **<span style="background-color:#fff5b1">블랙보드 패턴(Blackboard Pattern)</span>**<br/>
+  모든 컴포넌트들이 공유 데이터 저장소와 블랙보드 컴포넌트에 접근이 가능한 패턴
+- **<span style="background-color:#fff5b1">인터프리터 패턴(Interpreter Pattern)</span>**<br/>
+  프로그램 코드의 각 라인을 수행하는 방법을 지정하고, 기호마다 클래스를 갖도록 구성된 패턴
+
+#### **클래스(Class)**
+
+- **<span style="background-color:#fff5b1">공통된 속성과 연산을 갖는 객체의 집합</span>**
+- 각각의 객체들이 갖는 속성과 연산을 정의하고 있는 틀
+- 클래스에 속한 각각의 객체를 인스턴스(Instance)라고 함
+
+#### **메시지(Message)**
+
+- 객체들 간의 상호작용에 사용되는 수단으로, **<span style="background-color:#fff5b1">객체의 동작이나 연산을 일으키는 외부의 요구 사항</span>**
+- 메시지를 받은 객체는 대응하는 연산을 수행하여 예상된 결과를 반환
+
+#### **캡슐화(Encapsulation)**
+
+- **<span style="background-color:#fff5b1">외부에서의 접근을 제한하기 위해 인터페이스를 제외한 세부 내용을 은닉</span>**하는 것
+- 캡슐화된 객체는 외부 모듈의 변경으로 인한 파급 효과가 적음
+- 객체들 간에 메시지를 주고받을 때 상대 객체의 세부내용은 알 필요가 없으므로 인터페이스가 단순해지고, 객체 간의 결합도가 낮아짐
+
+#### **상속(Inheritance)**
+
+- **<span style="background-color:#fff5b1">상위 클래스의 모든 속성과 연산을 하위 클래스가 물려받는 것</span>**
+- 하위 클래스는 물려받은 속성과 연산을 다시 정의하지 않아도 즉시 자신의 속성으로 사용할 수 있음
+- 하위 클래스는 상속받은 속성과 연산 외에 새로운 속성과 연산을 첨가하여 사용할 수 있음
+
+#### **다형성(Polymorphism)**
+
+- 하나의 메시지에 대해 **<span style="background-color:#fff5b1">각각의 객체가 가지고 있는 고유한 방법으로 응답할 수 있는 능력</span>**
+- 객체들은 동일한 메소드명을 사용하며 같은 의미의 응답을 함
+
+#### **연관성(Relationship)**
+
+- **<span style="background-color:#fff5b1">두 개 이상의 객체들이 상호 참조하는 관계</span>**
+- **연관성의 종류**
+<table>
+<thead>
+<tr>
+<th class="text-center">종류</th>
+<th class="text-center">의미</th>
+<th class="text-center">특징</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="white-space: pre;">is member of</td>
+<td style="white-space: pre;">연관화<br/>(Association)</td>
+<td style="white-space: normal;">2개 이상의 객체가 상호 관련되어 있음을 의미함</td>
+</tr>
+<tr>
+<td style="white-space: pre;">is instance of</td>
+<td style="white-space: pre;">분류화<br/>(Classification)</td>
+<td style="white-space: normal;">동일한 형의 특성을 갖는 객체들을 모아 구성하는 것</td>
+</tr>
+<tr>
+<td style="white-space: pre;">is part of</td>
+<td style="white-space: pre;">집단화<br/>(Aggregation)</td>
+<td style="white-space: normal;">관련 있는 객체들을 묶어 하나의 상위 객체를 구성하는 것</td>
+</tr>
+<tr>
+<td rowspan="2" style="white-space: pre;">is a</td>
+<td style="white-space: pre;">일반화<br/>(Generalization)</td>
+<td style="white-space: normal;">공통적인 성질들로 추상화한 상위 객체를 구성하는 것</td>
+</tr>
+<tr>
+<!-- <td style="white-space: pre;"></td> -->
+<td style="white-space: pre;">특수화/상세화<br/>(Specialization)</td>
+<td style="white-space: normal;">상위 객체를 구체화하여 하위 객체를 구성하는 것</td>
+</tr>
+</tbody>
+</table>
+
+#### **객체지향 분석(OOA; Object Oriented Analysis)**
+
+- 사용자의 요구사항과 관련된 **<span style="background-color:#fff5b1">객체, 속성, 연산, 관계 등을 정의하여 모델링</span>**하는 작업
+- 개발을 위한 업무를 객체와 속성, 클래스와 멤버, 전체와 부분 등으로 나누어 분석
+- 클래스를 식별하는 것이 객체지향 분석의 주요 목적
+
+#### **객체지향 분석의 방법론**
+
+- **<span style="background-color:#fff5b1">Rumbaugh(럼바우) 방법</span>** : 분석 활동을 객체 모델, 동적 모델, 기능 모델로 나누어 수행함
+- **<span style="background-color:#fff5b1">Booch(부치) 방법</span>** : 미시적(Micro) 개발 프로세스와 거시적(Macro) 개발 프로세스를 모두 사용하며, 클래스와 객체들을 분석 및 식별하고 클래스의 속성과 연산을 정의함
+- **<span style="background-color:#fff5b1">Jacobson 방법</span>** : 유스케이스(Use Case)를 강조하여 사용함
+- **<span style="background-color:#fff5b1">Coad와 Yourdon 방법</span>** : E-R 다이어그램을 사용하여 객체의 행위를 모델링하며, 객체 식별, 구조 식별, 주제 정의, 속성과 인스턴스 연결 정의, 연ㄴ산과 메시지 연결 정의 등의 과정으로 구성함
+- **<span style="background-color:#fff5b1">Wirfs-Brock 방법</span>** : 분석과 설계 간의 구분이 없고, 고객 명세서를 평가해서 설계 작업까지 연속적으로 수행함
+
+#### **럼바우(Rumbaugh)의 분석 기법**
+
+- **<span style="background-color:#fff5b1">모든 소프트웨어 구성 요소를 그래픽 표기법을 이용하여 모델링</span>**하는 기법
+- 객체 모델링 기법(OMT, Object-Modeling Technique)
+- 분석 활동은 '객체 모델링 -> 동적 모델링 -> 기능 모델링' 순으로 이루어짐
+  * 객체 모델링(Object Modeling) : 정보 모델링(Information Modeling)이라고도 하며, 시스템에서 요구되는 객체를 찾아내어 속성과 연산 식별 및 겍체들 간의 관계를 규정하여 객체 다이어그램으로 표시하는 모델링
+  * 동적 모델링(Dynamic Modeling)  : 상태 다이어그램을 이용하여 시간의 흐름에 따른 객체들 간의 제어 흐름, 상호 작용, 동작 순서 드으이 동적인 행위를 표현하는 모델링
+  * 기능 모델링(Functional Modeling) : 자료 흐롬도(DFD)를 이용하여 다수의 프로세스들 간의 자료 흐름을 중시믕로 처리과정을 표현한 모델링
+
+#### **객체지향 설계 원칙(SOLID 원칙)**
+
+- **단일 책임 원칙(SRP)** : 객체는 단 하나의 책임만 가져가야한다는 원칙
+- **개방-폐쇄 원칙(OCP)** : 기존의 코드를 변경하지 않고 기능을 추가할 수 있도록 설계해야 한다는 원칙
+- **리스코프 치환 원칙(LSP)** : 자식 클래스는 최소한 부모 클래스의 기능을 수행할 수 있어야 한다는 원칙
+- **인터페이스 분리 원칙 원칙(SRP)** : 자신이 사용하지 않는 인터페이스와 의존 관계를 뱆거나 영향을 받지 않아야 한다.
+- **의존 역전 원칙(SRP)** : 의존 관계 성립 시 추상성이 높은 클래스와 의존 관계를 맺어야 한다는 원칙
