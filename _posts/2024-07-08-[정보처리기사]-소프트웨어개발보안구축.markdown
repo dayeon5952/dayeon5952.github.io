@@ -1,0 +1,209 @@
+---
+title: "[정보처리기사] 소프트웨어 개발 보안 구축"
+date: 2024-07-08 00:34:00 +09:00
+categories: [정보처리기사]
+tags: [정보처리기사, 소프트웨어 개발 보안 구축]
+---
+
+## 소프트웨어 개발 보안 구축
+
+#### **Secure SDLC**
+
+- 보안상 안전한 소프트웨어를 개발하기 위해 **<span style="background-color:#fff5b1">SDLC에 보안 강화를 위한 프로세스를 포함한 것</span>**을 의미
+- **Secure SDLC의 방법론**
+  * CLASP : SDLC의 초기 단계에서 보안을 강화하기 위해 개발된 방법론
+  * SDL : 마이크로소프트 사에서 안전한 소프트웨어 개발을 위해 기존의 SDLC를 개선한 방법론
+  * Seven Touchpoints: 소프트웨어 보안의 모범사례를 SDLC에 통합한 방법론
+
+
+#### **소프트웨어 개발 보안 요소**
+
+소프트웨어 개발에 있어 충족시켜야 할 요소 및 요건을 의미하며, 기밀성, 무결성, 가용성을 보안의 3대 요소라 함
+
+- **기밀성(Confidentiality)**
+  * 시스템 내의 정보와 자원은 인가된 사용자에게만 접근이 허용됨
+  * 정보가 전송 중에 노출되더라도 데이터를 읽을 수 없음
+- **무결성(Integrity)**<br/>
+  시스템 내의 정보는 오직 인가된 사용자만 수정할 수 있음
+- **가용성(Availability)**<br/>
+  인가받은 사용자는 시스템 내의 정보와 자원을 언제라도 사용할 수 있음
+- **인증(Authentication)**
+  * 시스템 내의 정보와 자원을 사용하려는 사용자가 합법적인 사용자인지를 확인하는 모든 행위
+  * **대표적 방법** : 패스워드, 인증용 카드, 지문 검사 등
+  * **부인 방지(NonRepudiation)** <br/>
+  데이터를 송·수신한 자가 송·수신 사실을 부인할 수 없도록 송·수신 증거를 제공
+
+#### **시큐어 코딩(Secure Coding)**
+
+- 구현 단계에서 발생할 수 있는 보안 취약점들을 최소화하기 위해 **<span style="background-color: #fff5b1">보안 요소들을 고려하며 코딩하는 것</span>**을 의미
+- 보안 취약점을 사전 대응하여 안정성과 신뢰성을 확보
+- 보안 정책을 바탕으로 시큐어 코딩 가이드를 작성하고, 개발 참여자에게는 시큐어 코딩 교육을 실시
+
+#### **SQL 삽입(Injection)**
+
+- 웹 응용 프로그램에 **<span style="background-color:#fff5b1">SQL을 삽입하여</span>** 내부 데이터베이스(DB) 서버의 **<span style="background-color:#fff5b1">데이터를 유출 및 변조하고, 관리자 인증을 우회하는 보안 약점</span>**
+- 동적 쿼리에 사용되는 입력 데이터에 예약어 및 특수문자가 입력되지 않게 필터링 되도록 설정하여 방지할 수 있음
+
+#### **크로스사이트 스크립팅(XSS)**
+
+- 웹페이지에 **<span style="background-color:#fff5b1">악의적인 스크립를 삽입하여</span>** 방문자들의 **<span style="background-color:#fff5b1">정보를 탈취하거나, 비정상적인 기능 수행을 유발하는 보안 약점</span>**
+- HTML 태그의 사용을 제한하거나 스크립트에 삽입되지 않도록 '<', '>', '&' 등의 문자를 다른 문자로 치환함으로써 방지할 수 있음
+
+#### **메모리 버퍼 오버플로**
+
+- 연속된 메모리 공간을 사용하는 프로그램에서 **<span style="background-color:#fff5b1">할당된 메모리의 범위를 넘어선 위치에서 자료를 읽거나 쓰려고 할 때 발생하는 보안 약점</span>**
+- 메모리 버퍼를 사용할 경우 적절한 버퍼의 크기를 설정하고, 설정된 범위의 메모리 내에서 올바르게 읽거나 쓸 수 있도록 함으로써 방지할 수 있음
+
+#### **보안 기능 관련 용어**
+
+- 보안 점검 내용 중 '보안 기능'은 소프트웨어 개발의 구현 단계에서 코딩하는 기능인 인증, 접근 제어, 기밀성, 암호화 등을 올바르게 구현하기 위한 보안 점검 항목들
+- **HTTPS(Hypertext Transfer Protocol Secure)** : 웹브라우저와 서버 간의 안전한 통신을 위해 HTTP와 암호 통신 규약을 결합한 것
+- **SSL(Secure Sockets Layer)** : 데이터를 송·수신하는 두 컴퓨터 사이, 종단 간, 즉 TCP/IP 계층과 애플리케이션 계층(HTTP, TELNET, FTP 등) 사이에 위치하여 인증, 암호화, 무결성을 보장하는 업계 표준 프로토콜
+- **하드코딩(Hard-coding)** : 데이터를 코드 내부에 직접 입력하여 프로그래밍하는 방식
+
+#### **하드코드된 암호화 키**
+
+- 암호화된 키도 하드코드된 경우 유출 시 역계산 또는 무차별 대입 공격에 의해 탈취될 수 있음
+- 상수 형태이 암호화키를 사용하지 않고, 암호화 키 생성 모듈 또는 보안이 보장된 외부 공간을 이용함으로써 방지할 수 있음
+
+#### **스택 가드(Stack Guard)**
+
+- 널 포인터 역참조와 같이 **<span style="background-color:#fff5b1">주소가 저장되는 스택에서 발생하는 보안 약점을 막는 기술</span>** 중 하나
+- 메모리상에서 프로그램의 복귀 주소와 변수 사이에 특정 값을 저장한 후 그 값이 변경되었을 경우 오버플로우 상태로 판단하여 프로그램 실행을 중단함을써 잘못된 복귀 주소의 호출을 막음
+
+#### **접근 제어자**
+
+- 프로그래밍 언어에서 특정 개첼르 선언할 때 **<span style="background-color:#fff5b1">외부로부터의 접근을 제한하기 위해 사용되는 예약어</span>**
+- 접근 제어자의 종류(접근 가능 : ○, 접근 불가능 : X)
+<table>
+<thead>
+<tr>
+<th class="text-center" style="white-space: pre;">접근<br/>제어자</th>
+<th class="text-center" style="white-space: pre;">클래스<br/>내부</th>
+<th class="text-center" style="white-space: pre;">패키지<br/>내부</th>
+<th class="text-center" style="white-space: pre;">하위<br/>클래스</th>
+<th class="text-center" style="white-space: pre;">패키지<br/>외부</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="white-space:pre;">Public</td>
+<td class="text-center" style="white-space:pre;">○</td>
+<td class="text-center" style="white-space:pre;">○</td>
+<td class="text-center" style="white-space:pre;">○</td>
+<td class="text-center" style="white-space:pre;">○</td>
+</tr>
+<tr>
+<td style="white-space:pre;">Protected</td>
+<td class="text-center" style="white-space:pre;">○</td>
+<td class="text-center" style="white-space:pre;">○</td>
+<td class="text-center" style="white-space:pre;">○</td>
+<td class="text-center" style="white-space:pre;">X</td>
+</tr>
+<tr>
+<td style="white-space:pre;">Default</td>
+<td class="text-center" style="white-space:pre;">○</td>
+<td class="text-center" style="white-space:pre;">○</td>
+<td class="text-center" style="white-space:pre;">X</td>
+<td class="text-center" style="white-space:pre;">X</td>
+</tr>
+<tr>
+<td style="white-space:pre;">Private</td>
+<td class="text-center" style="white-space:pre;">○</td>
+<td class="text-center" style="white-space:pre;">X</td>
+<td class="text-center" style="white-space:pre;">X</td>
+<td class="text-center" style="white-space:pre;">X</td>
+</tr>
+</tbody>
+</table>
+
+#### **개인키 암호화(Private Key Encryption) 기법**
+
+- **<span style="background-color:#fff5b1">동일한 키로 데이터를 암호화하고 복호화하는 암호화 기법</span>**
+- 대칭 암호 기법 또는 단일키 암호화 기법이라고도 함
+- 암호화와 복호화 속도가 빠름
+- 관리해야 할 키의 수가 많음
+- 개인키 암호화 기법의 종류에는 스트림 암호화 방식과 블록 암호화 방식이 있음
+<table>
+<tr>
+<th style="white-space:pre;">스트림 암호화<br/>방식</th>
+<td style="white-space:normal;">
+<ul>
+<li>평문과 동일한 길이의 스트림을 생성하여 비트 단위로 암호화 하는 방식</li>
+<li>종류 : LFSR, RC4</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th style="white-space:pre;">블록 암호화<br/>방식</th>
+<td style="white-space:normal;">
+<ul>
+<li>한 번에 하나의 데이터 블록을 암호화 하는 방식</li>
+<li>종류 : DES, SEED, AES, ARIA</li>
+</ul>
+</td>
+</tr>
+</table>
+
+#### **공개키 암호화(Public Key Encryption) 기법**
+
+- 데이터를 **<span style="background-color:#fff5b1">암호화할 때 사용하는 공개키(Public Key)는 사용자에게 공개하고, 복호화할 때의 비밀키(Secret Key)는 관리자가 비밀리에 관리하는 암호화 기법</span>**
+- 비대칭 암호 기법이라고도 함
+- 암호화와 복호화 속도가 느림
+- 관리해야 할 키의 수가 적음
+- 대표적으로 RSA(Rivest Shamir Adleman) 기법이 있음
+
+#### **DES(Data Encryption Standard)**
+
+- 1975년 미국 NBS에서 발표한 개인키 암호화 알고리즘
+- 블록 크기는 64비트, 키 길이는 56비트이며 16회의 라운드를 수행
+- DES를 3번 적용하여 보안을 더욱 강화한 3DES(Triple DES)가 있음
+
+#### **AES(Advanced Encryption Standard)**
+
+- 2001년 미국 표준 기술 연구소(NIST)에서 발표한 개인키 암호화 알고리즘
+- DES의 한계를 느낀 NIST에서 공모한 후 발표
+- 블록의 크기는 128비트이며, 키 길이에 따라 AES-128, AES-192, AES-256으로 분류됨
+
+#### **RSA(Rivest Shamir Adleman)**
+
+- 1978년 MIT의 라이베이스(Rivest), 샤미르(Shamir), 애들먼(Adelman)에 의해 제안된 공개키 암호화 알고리즘
+- 큰 숫자를 소인수분해 하기 어렵다는 것에 기반하여 만들어짐
+
+#### **해시(Hash)**
+
+- 임의의 길이의 **<span style="background-color:#fff5b1">입력 데이터나 메시지를 고정된 길이의 값이나 키로 변환하는 것</span>**을 의미
+- 해시 알고리즘으 해시 함수라고 부르며, 해시 함수로 변환된 값이나 키를 해시값 또는 해시키라고 부름
+- **종류** : SHA 시리즈, HAVAL, MD4, MD5, N-NASH, SNEFRU 등
+
+#### **MD5(Message Digest algorithm 5)**
+
+- 1991년 R.Rivest가 MD4를 대체하기 위해 고안한 암호화 해시 함수
+- 블록 크기가 512비트이며, 키 길이는 128비트
+
+#### **TKIP(Temporal Key Integrity Protocol)**
+
+- 기존의 무선 랜 보안 프로토콜인 **<span style="background-color:#fff5b1">WEP의 취약성을 보완한 데이터 보안 프로토콜</span>**
+- 암호 알고리즘의 입력 키 길이를 128비트로 늘리고 패킷당 키 할당, 키값 재설정 등의 키 관리 방식을 개선함
+
+#### **보안 프레임워크(Security Framework)**
+
+- **<span style="background-color:#fff5b1">안전한 정보 시스템 환경을 유지하고 보안 수준을 향상시키기 위한 체계</span>**
+- ISO 27001은 정보보안 관리를 위한 국제 표준으로, 일종의 보안 인증이자 가장 대표적인 보안 프레임워크
+- ISO 27001은 영국의 BSI(British Standards Institute)가 제정한 BS 7799를 기반으로 구성됨
+
+#### **침임 탐지 시스템(IDS; Intrusion Detection System)**
+
+- **<span style="background-color:#fff5b1">컴퓨터 시스템의 비정상적인 사용, 오용, 남용 등을 실시간으로 탐지하는 시스템</span>**
+- **오용 탐지(Misuse Detection)** : 미리 입력해 둔 공격 패턴이 감지되면 이를 알려줌
+- **이상 탐지(Anomaly Detection)** : 평균적인 시스템의 상태를 기준으로 비정상적인 행위나 자원의 사용이 감지되면 이를 알려줌
+
+#### **웹 방화벽(Web Firewall)**
+
+- 일반 방화벽이 탐지하기 못하는 SQL 삽입 공격, Cross-Site Scripting(XSS) 등의 **<span style="background-color:#fff5b1">웹 기반 공격을 방어할 목적으로 만들어진 웹 서버에 특화된 방화벽</span>**
+- 웹 관련 공격을 감시하고 공격이 웹 서버에 도달하기 전에 이를 차단해줌
+
+#### **VPN(Virtual Private Network, 가상 사설 통신망)**
+
+- 인터넷 등 통신 사업자의 **<span style="background-color:#fff5b1">공중 네트워크와 암호화 기술을 이용하여 사용자가 마치 자신의 전용 회선을 사용하는 것처럼 해주는 보안 솔루션</span>**
+- 암호화된 규격을 통해 인터넷망을 전용선의 사설망을 구축한 것처럼 이용하므로 비용 부담을 줄일 수 있음
