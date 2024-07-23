@@ -207,3 +207,113 @@ tags: [정보처리기사, 소프트웨어 개발 보안 구축]
 
 - 인터넷 등 통신 사업자의 **<span style="background-color:#fff5b1">공중 네트워크와 암호화 기술을 이용하여 사용자가 마치 자신의 전용 회선을 사용하는 것처럼 해주는 보안 솔루션</span>**
 - 암호화된 규격을 통해 인터넷망을 전용선의 사설망을 구축한 것처럼 이용하므로 비용 부담을 줄일 수 있음
+
+#### **AAA(=3A)**
+
+- 다음 3가지 기능을 기반으로 사용자의 컴퓨터 자원 접근에 대한 처리와 서비스를 제공하는 기반 구조(Infrastructure) 또는 규격을 의미
+- **인증(Authentication)** : 접근하는 사용자의 신원을 검증하는 기능
+- **인가(Authorization)** : 신원이 검증된 사용자에게 특정된 권한과 서비스를 허용하는 기능
+- **과금(Accounting)** : 사용자가 어떤 종류의 서비스를 이용했고, 얼마만큼의 자원을 사용했는지 기록 및 보관하는 기능
+
+#### **정보보호 관리 체계(ISMS; Information Security Management System)**
+
+- **<span style="background-color:#fff5b1">정보 자산을 안전하게 보호하기 위한 보호 절차와 대책</span>**
+- 조직에 맞는 정보보호 정책을 수립하고, 위험에 상시 대응하는 여러 보안 대책을 통합 관리·운용
+- 우리나라에서는 정보보호 관리 체계를 평가하고 인증하는 사업을 한국인터넷진흥원(KISA)에서 운영하고 있음
+
+#### **SMURFING(스머핑)**
+
+- **<span style="background-color:#fff5b1">IP나 ICMP의 특성을 악용하여 엄청난 양의 데이터를 한 사이트에 집중적으로 보냄으로써 네트워크를 불능 상태로 만드는 공격 방법</span>**
+- 공격을 무력화하는 방법 중 하나는 각 네트워크 라우터에서 브로드캐스트 주소를 사용할 수 없게 미리 설정해 놓는 것
+
+#### **LAND Attack(Local Area Network Denial Attack)**
+
+- **<span style="background-color:#fff5b1">패킷을 전송할 때 송신 IP 주소와 수신 IP 주소를 모두 공격 대상의 IP 주소로 하여</span>** 공격 대상에게 전송하는 것으로, 이 패킷을 받은 공격 대상은 송신 IP 주소가 자신이므로 자신에게 응답을 수행하게 되는데, 이러한 패킷이 계속해서 전송될 경우 **<span style="background-color:#fff5b1">자신에 대해 무한히 응답하게 하는 공격 방법</span>**
+
+#### **DDoS(Distributed Denial of Service, 분산 서비스 거부) 공격**
+
+- **<span style="background-color:#fff5b1">여러 곳에 분산된 공격 지점에서 한 곳의 서버에 대해 서비스 거부 공격을 수행하는 것</span>**
+- 네트워크에서 취약점이 있는 호스트들을 탐색한 후 이들 호스트들에 분산 서비스 공격용 툴을 설치하여 에이전트(Agent)로 만든 후 DDoS 공격에 이용
+
+#### **분산 서비스 공격용 툴**
+
+에이전트(Agent)의 역할을 수행하도록 설계된 프로그램으로 데몬(Daemon)이라고 부르며, 다음과 같은 종류가 있음
+
+<table>
+<tr>
+<th style="white-space: pre;">Trin00</th>
+<td style="white-space: normal;">가장 초기 형태의 데몬으로, 주로 UDP Flooding 공격을 수행함</td>
+</tr>
+<tr>
+<th style="white-space: pre;">TNT(Tribe<br/>Flood Network)</th>
+<td style="white-space: normal;">UDP Flooding 뿐만 아니라 TCP SYN Flood 공격, ICMP 응답 요청, 스머핑 공격 등을 수행함</td>
+</tr>
+<tr>
+<th style="white-space: pre;">TFN2K</th>
+<td style="white-space: normal;">TFN의 확장판임</td>
+</tr>
+<tr>
+<th style="white-space: pre;">Stacheldraht</th>
+<td style="white-space: normal;">
+<ul>
+<li>이전 툴들의 기능을 유지하면서, 공격자, 마스터, 에이전트가 쉽게 노출되지 않도록 암호화된 통신을 수행함</li>
+<li>툴이 자동으로 업데이트됨</li>
+</ul>
+</td>
+</tr>
+</table>
+
+#### **세선 하이재킹(Session Hijacking)**
+
+- **<span style="background-color:#fff5b1">상호 인증 과정을 거친 후 접속해 있는 서버와 </span>** 서로 접속되어 **<span style="background-color:#fff5b1">클라이언트 사이의 세션 정보를 가로채는 공격 기법</span>**, 접속을 위한 인증 정보 없이도 가로챈 세션을 이용해 공격자가 원래의 클라이언트인 것처럼 위장하여 서버의 자원이나 데이터를 무단으로 사용함
+- TCP 3-WAY-HANDSHAKE 과정에 끼어듦으로써 클라이언트와 서버 간의 동기화된 시쿼스 번호를 가로채 서버에 무단으로 접근하는 TCP 세션 하이재킹이 대표적인 예
+
+#### **ARP 스푸핑(ARP Spoofing)**
+
+- ARP의 취약점을 이용한 공격 기법으로, **<span style="background-color:#fff5b1">자신의 물리적 주소(MAC)를 공격대상의 것으로 변조하여</span>** 공격 대상에게 도달해야 하는 **<span style="background-color:#fff5b1">데이터 패킷을 가로채거나 방해하는 기법</span>**<br/>
+※ **ARP(Address Resolution Protocol)** : 호스트의 IP 주소를 호스트와 연결된 네트워크 접속 장치의 물리적 주소(MAC Address)로 변환해주는 프로토콜
+
+#### **스니핑(Sniffing)**
+
+- **<span style="background-color:#fff5b1">네트워크의 중간에서 남의 패킷 정보를 도청</span>**하는 해킹 유형의 하나로, 수동적 공격에 해당
+
+#### **워터링 홀(Watering Hole)**
+
+- 목표 대상이 자주 방분하는 **<span style="background-color:#fff5b1">웹 사이트를 사전에 감염시켜</span>** 대상이 해당 **<span style="background-color:#fff5b1">사이트에 방문했을 때 악성 코드에 감염되게 하는</span>** 웹 기반 **<span style="background-color:#fff5b1">공격</span>**
+- 감염된 PC를 기반으로 대상이 속한 조직의 중요 시스템에 접근하거나 불능으로 만드는 등의 영향력을 행사할 수 있음
+
+### **키로거 공격(Key Logger Attack)**
+
+- **<span style="background-color:#fff5b1">컴퓨터 사용자의 키보드 움직임을 탐지해</span>** ID, 패스워드, 계좌번호, 카드번호 등과 같은 개인의 중요한 **<span style="background-color:#fff5b1">정보를 몰래 빼가는 해킹 공격</span>**
+
+#### **랜섬웨어(Ransomware)**
+
+인터넷 사용자의 컴퓨터에 잠임해 **<span style="background-color:#fff5b1">내부 문서나 파일 등을 암호화해 사용자가 열지 못하게 하는 프로그램</span>**으로, 암호 해독용 프로그램의 전달을 조건으로 사용자에게 돈을 요구하기도 함
+
+#### **백도어(Back Door, Trap Door)**
+
+- **<span style="background-color:#fff5b1">시스템 설계자가</span>** 서비스 기술자나 유지 보수 프로그램 작성자의 **<span style="background-color:#fff5b1">액세스 편의를 위해 시스템 보안을 제거하여 만들어놓은 비밀 통로</span>**로, 컴퓨터 범죄에 악용되기도 함
+- **백도어 탐지 방법** : 무결성 검사, 열린 포트 확인, 로그 분석, SetUID 파일 검사 등
+
+#### **기타 정보 보안 관련 용어 1**
+
+- **스미싱(Smishing)**<br/>
+문자 메시지(SMS)를 이용해 사용자의 개인 신용 정보를 빼내는 수법
+- **스피어 피싱(Spear Phishing)**<br/>
+사회 공학의 한 기법으로, 특정 대상을 선정한 후 그 대상에게 일반적인 이메일로 위장한 메일을 지속적으로 발송하여, 발송 메일의 본문 링크나 첨부된 파일을 클릭하도록 유도해 사용자의 개인 정보를 탈취하는 공격
+- **APT(Advanced Persistent Threats, 지능형 지속 위협)**<br/>
+다양한 IT 기술과 방식들을 이용해 조직적으로 특정 기업이나 조직 네트워크에 침투해 활동 거점을 마련한 뒤 때를 기다리면서 보안을 무력화시키고 정보를 수집한 다음 외부로 빼돌리는 형태의 공격
+- **무작위 대입 공격(Brute Force Attack)**<br/>
+암호화된 문서의 암호키를 찾아내기 위해 적용 가능한 모든 값을 대입하여 공격하는 방식
+- **큐싱(Qshing)**<br/>
+QR코드(Quick Response Code)를 토해 악성 앱의 다운로드를 유도하거나 악성 프로그램을 설치하도록 하는 금융사기 기법의 하나로, QR코드와 개인정보 및 금융정보를 낚는다(Fishing)는 의미의 합성 신조어
+- **WEP(Wired Equivalent Privacy, 유선급 프라이버시)**<br/>
+유선 랜(LAN)에서 기대할 수 있는 것과 같은 보안과 프라이버시 수준의 무선 랜(WLAN)의 보안 프로토콜
+- **WPA2(Wi-Fi Protected Access 2)**<br/>
+WEP의 취약성에 대한 대안으로 발표된 무선랜 보안 기술 규격으로, IEEE 802.11i 표준을 수용하지 못했던 WPA를 개선한 버전
+- **EDR(Endpoint Detection & Response)**<br/>
+엔드포인트 영역에 대한 지속적인 모니터링을 통해 행위 기반 위협 탐지 및 분석, 대응 기능을 제공하는 솔루션
+- **TMS(Threat Management System)**<br/>
+전사적 IT인프라에 대한 위협정보들을 수집·분석·경보·관리하는 정보보호 통합 관리 시스템으로, 실시간으로 공신력 있는 대외 정보보호기관이 위폅정보들을 들을 수집·분석하여 정보보호관리자에게 말한다.
+
+
