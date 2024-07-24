@@ -1,0 +1,259 @@
+---
+title: "[정보처리기사] 응용 SW 기초 기술 활용 1"
+date: 2024-07-09 00:34:00 +09:00
+categories: [정보처리기사]
+tags: [정보처리기사, 응용 SW 기초 기술 활용]
+---
+
+## 응용 SW 기초 기술 활용
+
+#### **운영체제(OS; Operating System)**
+
+- **<span style="background-color:#fff5b1">컴퓨터 시스템의 자원들을 효율적으로 관리</span>**하며, 사용자가 컴퓨터를 **<span style="background-color:#fff5b1">편리하고 효과적으로 사용할 수 있도록 환경을 제공하는 여러 프로그램의 모임</span>**
+- 컴퓨터 사용자와 컴퓨터 하드웨어 간의 인터페이스로 동작하는 시스템 소프트웨어의 일종
+- 프로세서, 기억장치, 입·출력장치, 파일 및 정보 등의 자원을 관리
+
+#### **UNIX**
+
+- 1960년대 **<span style="background-color:#fff5b1">AT&T 벨(Bell) 연구소, MIT, General Electric이 공동 개발한 운영체제</span>**
+- 시분할 시스템(Time Sharing System)을 위해 설계된 대화식 운영체제
+- 대부분 C언어로 작성되어 있어 이식성이 높으며 장치, 프로세스 간의 호환성이 높음
+- 트리(Tree) 구조의 파일 시스템을 갖음
+
+#### **UNIX 시스템의 구성**
+
+- **커널(Kernel)**
+  * UNIX의 가장 핵심적인 부분으로 하드웨어를 보호하고, 프로그램과 하드웨어 간의 인터페이스 역할을 담당
+  * 프로세스(CPU 스케줄링) 관리, 기억장치 관리, 파일 관리, 입·출력 관리, 프로세스간 통신, 데이터 전송 및 변환 등 여러가지 기능을 수행
+- **쉘(Shell)**
+  * 사용자의 명령어를 인식하여 프로그램을 호출하고 명령을 수행하는 명령어 해석기
+  * 시스템과 사용자 간의 인터페이스를 담당
+
+#### **Android(안드로이드)**
+
+- **<span style="background-color:#fff5b1">구글(Google) 사에서 개발한</span>** 리눅스 커널 기반의 **<span style="background-color:#fff5b1">개방형 모바일 운영체제</span>**
+- 모든 코드가 공개된 개방형 소프트웨어
+- 자바와 코틀린으로 애플리케이션을 작성
+
+#### **기억장치 관리 - 반입 전략**
+
+- 반입(Fetch) 전략은 보조기억장치에 보관중인 **<span style="background-color:#fff5b1">프로그램이나 데이터를 언제 주기억장치로 적재할 것인지를 결정하는 전략</span>**
+- **요구 반입(Demand Fetch)** : 실행중인 프로그램이 특정 프로그램이나 데이터 등의 참조를 요구할 때 적재하는 방법
+- **예상 반입(Anticipatory Fetch)** : 실행중인 프로그램에 의해 참조될 프로그램이나 데이터를 미리 예상하여 적재하는 방법
+
+#### **기억장치 관리 - 배치 전략**
+
+- 배치(Placement) 전략은 새로 반입되는 **<span style="background-color:#fff5b1">프로그램이나 데이터를 주기억장치의 어디에 위치시킬 것인지를 결정하는 전략</span>**
+- **최초 적합(First Fit)** : 프로그램이나 데이터가 들어갈 수 있는 크기의 빈 영역 중에서 첫 번째 분할 영역에 배치시키는 방법
+- **최적 적합(Best Fit)** : 프로그램이나 데이터가 들어갈 수 있는 크기의 빈 영역 중에서 단편화를 가장 작게 남기는 분할 영역에 배치시키는 방법
+- **최악 적합(Worst Fit)** : 프로그램이나 데이터가 들어갈 수 있는 크기의 빈 영역 중에서 단편화를 가장 많이 남기는 분할 영역에 배치시키는 방법
+
+#### **주기억장치 할당 기법**
+
+- **<span style="background-color:#fff5b1">프로그램이나 데이터를 실행시키기 위해 주기억자이체 어떻게 감당할 것인지를 결정하는 기법</span>**
+- **주기억장치 할당 기법의 분류**
+<table>
+<tr>
+<th style="white-space: pre;">연속 할당<br/>기법</th>
+<td style="white-space: normal;">
+<ul>
+<li>프로그램을 주기억자이체 연속으로 할당하는 기법</li>
+<li>종류 : 단일 분할 할당 기법, 다중 분할 할당 기법</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th  style="white-space: pre;">분산 할당<br/>기법</th>
+<td style="white-space: normal;">
+<ul>
+<li>프로그램을 특정 단위의 조각으로 나누어 주기억장치 내에서 분산하여 할당하는 기법</li>
+<li>종류 : 페이징 기법, 세그먼테이션 기법</li>
+</ul>
+</td>
+</tr>
+</table>
+
+#### **다중 분할 할당 기법**
+
+- **고정 분할 할당 기법 = 정적 할당 기법**<br/>
+프로그램을 할당하기 전에 운영체제가 **<span style="background-color:#fff5b1">주기억장치의</span>** 사용자 **<span style="background-color:#fff5b1">영역을 여러 개의 고정된 크기로 분할하고</span>** 준비상태 큐에서 준비중인 **<span style="background-color:#fff5b1">프로그램을 각 영역에 할당하여 수행하는 기법</span>**
+- **가변 분할 할당 기법 = 동적 할당 기법**<br/>
+  * 주기억장치를 미리 분할해 놓지 않고 **<span style="background-color:#fff5b1">프로그램을 주기억장치에 적재하면서 필요한 만큼의 크기로 영역을 분할하는 기법</span>**
+  * 고정 분할 할당 기법의 단편화를 줄이기 위해 사용됨
+
+#### **가상기억장치(Virtual Memory)**
+
+- **<span style="background-color:#fff5b1">보조기억장치의 일부를 주기억장치처럼 사용하는 것</span>**, 용량이 작은 주기억장치를 마치 큰 용량을 가진 것처럼 사용하는 기법
+- 프로그램을 여러 개의 작은 블록 단위로 나누어서 가상기억장치에 보관해 놓고, 프로그램 실행 시 요구되는 블록만 주기억자이체 불연속적으로 할당하여 처리
+- **가상기억장치의 구현 방법** : 페이징 기법, 세그먼테이션 기법
+
+#### **가상기억장치 구현 기법**
+
+- **페이징(Paging) 기법**
+  * 가상기억장치에 보관되어 있는 **<span style="background-color:#fff5b1">프로그램과 주기억장치의 영역을 동일한 크기로 나눈 후</span>** 나눠진 프로그램을 동일하게 나눠진 **<span style="background-color:#fff5b1">주기억자잋의 영역에 적재시켜 실행하는 기법</span>**
+  * 프로그램을 일정한 크기로 나눈 단위를 페이지(Page)라고 하고, 페이지 크기로 일정하게 나누어진 주기억장치의 단위를 페이지 프레임(Page Frame)이라고 함
+- **세그먼테이션(Segmentation) 기법**
+  * 가상기억장치에 보관되어 있는 **<span style="background-color:#fff5b1">프로그램을 다양한 크기의 논리적인 단위로 나눈 후 주기억장치에 적재시켜 실행시키는 기법</span>**
+  * 프로그램을 배열이나 함수 등과 같은 논리적인 크기로 나눈 단위를 세그먼트(Segment)라고 하며, 각 세그먼트는 고유한 이름과 크기를 갖음
+
+#### **페이지 교체 알고리즘**
+
+- **<span style="background-color:#fff5b1">페이지 부재(Page Fault)가 발생하면</span>** 가상기억장치에서 필요한 페이지를 찾아 주기억장치에 적재해야 하는데, 이때 주기억장치의 모든 페이지 프레임이 사용중이면 **<span style="background-color:#fff5b1">어떤 페이지 프레임을 선택하여 교체할 것인지를 결정하는 기법</span>**이 페이지 교체 알고리즘
+- **종류** : OPT, FIFO, LRU, LFU, NUR, SCR 등
+
+#### **FIFO(First In First Out)**
+
+각 페이지가 주기억장치에 적재될 때마다 그때의 시간을 기억시켜 **<span style="background-color:#fff5b1">가장 먼저 들어와서 가장 오래 있었던 페이지를 교체하는 기법</span>**
+
+#### **Locality(국부성, 지역성, 구역성, 국소성)**
+
+- **<span style="background-color:#fff5b1">프로세스가 실행되는 동안 주기억장치를 참조할 때 일부 페이지만 집중적으로 참조하는 성질</span>**이 있다는 이론
+- 스래싱을 방지하기 위한 워킹 셋 이론의 기반이 됨
+- **시간 구역성(Temporal Locality)** : 프로세스가 실행되면서 하나의 페이지를 일정 시간 동안 집중적으로 액세스하는 현상
+- **공간 구역성(Spatial Locality)** : 프로세스 실행 시 일정 위치의 페이지를 집중적으로 액세스 하는 현상
+
+#### **워킹 셋(Working Set)**
+
+- **<span style="background-color:#fff5b1">프로세스가 일정 시간 동안 자주 참조하는 페이지들의 집합</span>**
+- 자주 참조되는 워킹 셋을 주기억장치에 상주시킴으로써 페이지 부재 및 페이지 교체 현상이 줄어들어 프로세스의 기억장치 사용이 안정됨
+
+#### **스래싱(Thrashing)**
+
+- **<span style="background-color:#fff5b1">프로세스의 처리 시간보다 페이지 교체에 소요되는 시간이 더 많아지는 현상</span>**
+- 다중 프로그래밍 시스템이나 가상기억장치를 사용하는 시스템에서 하나의 프로세스 수행 과정 중에 자주 페이지 부재(Page Fault)가 발생함으로써 나타나며, 전체 시스템의 성능이 저하됨
+
+#### **프로세스(Process)**
+
+- 일반적으로 프로세서에 의해 처리되는 사용자 프로그램, 시스템 프로그램, 즉 **<span style="background-color:#fff5b1">실행중인 프로그램</span>**을 의미
+- **프로세스의 정의**
+  * PCB를 가진 프로그램
+  * 실기억장치에 저장된 프로그램
+  * 프로세서가 할당되는 실체로서, 디스패치가 가능한 단위
+  * 프로시저가 활동중인 것
+  * 비동기적 행위를 일으키는 주체
+  * 운영체제가 관리하는 실행 단위
+
+#### **PCB(Process Control Block, 프로세스 제어 블록)**
+
+- **<span style="background-color:#fff5b1">운영체제가 프로세스에 대한 중요한 정보를 저장해 놓는 곳</span>**
+- **PCB에 저장되어 있는 정보**
+  * 프로세스의 현재 상태
+  * 포인터
+  * 프로세스 고유 식별자
+  * CPU 레지스터 정보
+  * 주기억장치 관리 정보
+  * 입·출력 상태 정보
+  * 계정 정보
+
+#### **프로세스 상태 전이**
+
+프로세스가 시스템 내에 존재하는 동안 프로세스의 상태가 변하는 것을 의미
+![image](/post/프로세스상태전이.png){: width="85%"}
+
+#### **프로세스 상태 전이 관련 용어**
+
+- **Dispatch(디스패치)**<br/>
+준비 상태에서 대기하고 있는 프로세스 중 하나가 프로세서를 할당받아 실행 상태로 전이되는 과정
+- **Wake Up**<br/>
+입·출력 작업이 완료되어 프로세스가 대기 상태에서 준비 상태로 전이 되는 과정
+- **Spooling(스풀링)**<br/>
+입·출력장치의 공유 및 상대적으로 느린 입·출력장치의 처리 속도를 보완하고 다중 프로그래밍 시스템의 성능을 향상시키기 위해 입·출력할 데이터를 직접 입·출력장치에 보내지 않고 나중에 한꺼번에 입·출력하기 위해 디스크에 저장하는 과정
+
+#### **스레드(Thread)**
+
+- **<span style="background-color:#fff5b1">시스템의 여러 자원을 할당받아 실행하는 프로그램의 단위</span>** 또는 프로세스 내에서의 작업 단위로 사용됨
+- 프로세스의 일부 특성을 갖고 있기 때문에 경량(Light Weight) 프로세스라고도 함
+
+#### **FCFS(Fist Come First Service, 선입 선출)**
+- FCFS(Fist Come First Service, 선입 선출) = FIFO(First In First Out)은 **<span style="background-color:#fff5b1">준비상태 큐에 도착한 순서에 따라 차례로 CPU를 할당하는 기법</span>**
+
+#### **SJF(Shortest Job First, 단기 작업 우선)**
+
+- **<span style="background-color:#fff5b1">준비상태 큐에서</span>** 기다리고 있는 프로세스들 중에서 **<span style="background-color:#fff5b1">실행 시간이 가장 짧은 프로세스에게 먼저 CPU를 할당하는 기법</span>**
+- 가장 적은 평균 대기 시간을 제공하는 최적 알고리즘
+
+#### **HRN(Highest Response-ratio Next)**
+
+- **<span style="background-color:#fff5b1">대기 시간과 서비스(실행) 시간을 이용하는 기법</span>**
+- 우선순위를 계산하여 그 숫자가 가장 높은 것부터 낮은순으로 우선순위가 부여된
+- **우선순위 계산식**<br/>
+<div style="border: 0.5px solid #dedede; padding: 0 16px; border-radius: 8px;">
+$$우선순위 계산식=\frac{대기 시간 + 서비스 시간}{서비스 시간}$$
+</div>
+
+#### **환경변수(Environment Variable)**
+
+- **<span style="background-color:#fff5b1">시스템 소프트웨어의 동작에 영향을 미치는 동적인 값들의 모임</span>**
+- 환경 변수는 변수명과 값으로 구성
+- Windows에서 set을 입력하면 모든 환경 변수와 값을 출력
+- UNIX나 LINUX에서는 set, env, printenv, setenv 중 하나를 입력하면 모든 환경 변수와 값을 표시
+
+#### **UNIX/LINUX 기본 명령어**
+
+<table>
+<tr>
+<th style="white-space:pre;">cat</th>
+<td style="white-space:normal;">파일 내용을 화면에 표시함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">cd</th>
+<td style="white-space:normal;">디렉터리의 위치를 변경함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">chown</th>
+<td style="white-space:normal;">파일 소유자와 그룹을 변경함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">cp</th>
+<td style="white-space:normal;">파일을 복사함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">rm</th>
+<td style="white-space:normal;">파일을 삭제함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">find</th>
+<td style="white-space:normal;">파일을 찾음</td>
+</tr>
+<tr>
+<th style="white-space:pre;">kill</th>
+<td style="white-space:normal;">PID(프로세스 고유 번호)를 이용하여 프로세스를 종료함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">fork</th>
+<td style="white-space:normal;">새로운 프로세스를 생성함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">ls</th>
+<td style="white-space:normal;">현재 디렉터리의 파일 목록을 표시함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">mkdir</th>
+<td style="white-space:normal;">디렉터리를 생성함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">rmdir</th>
+<td style="white-space:normal;">디렉터리를 삭제함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">mv</th>
+<td style="white-space:normal;">파일을 이동함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">ps</th>
+<td style="white-space:normal;">현재 실행중인 프로세스를 표시함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">pwd</th>
+<td style="white-space:normal;">현재 작업중인 디렉토리 경로를 화면에 표시함</td>
+</tr>
+<tr>
+<th style="white-space:pre;">who</th>
+<td style="white-space:normal;">현재 시스템에 접속해 있는 사용자를 표시함</td>
+</tr>
+</table>
+
+#### **chmod**
+
+- **<span style="background-color:#fff5b1">파일의 보호 모드를 설정하여 파일의 사용 허가를 지정하는 UNIX  명령어</span>**
+- 8진법 숫자를 이용한 방법으로도 파일의 보호 모드를 설정할 수 있음

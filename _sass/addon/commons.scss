@@ -308,6 +308,13 @@ sup {
         }
       }
     } /* tbody */
+    tr {
+      th {
+        background-color: rgba(225, 234, 238, 0.8);
+        border-bottom: 1px solid var(--tb-border-color);
+        padding: 0 8px;
+      }
+    }
   } /* table */
 }
 
