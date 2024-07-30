@@ -126,7 +126,7 @@ tags: [정보처리기사, 애플리케이션 테스트 관리 ]
 #### **인수 테스트(Acceptance Test)**
 
 - 개발 한 소프트웨어가 **<span style="background-color:#fff5b1">사용자의 요구사항을 충족하는지에 중점을 두고 테스트</span>**하는 것
-- 인스 테스트는 개발한 소프트웨어를 사용자가 직접 테스트함
+- 인수 테스트는 개발한 소프트웨어를 사용자가 직접 테스트함
 <table>
 <tr>
 <th style="white-space:pre;">알파<br/>테스트</th>

@@ -142,7 +142,7 @@ REVOKE [GRANT OPTION FOR] 권한_리스트 ON 개체 FROM 사용자 [CASCADE];
 
 #### **DML(Data Manipulation Language, 데이터 조작어)**
 
-- 데이터베이스 사용자가 <span style="background-color:#fff5b1">저장된 데이터를 실질적으로 관리하는데 사용되는 언어</span>**
+- 데이터베이스 사용자가 **<span style="background-color:#fff5b1">저장된 데이터를 실질적으로 관리하는데 사용되는 언어</span>**
 - 데이터베이스 사용자와 데이터베이스 관리 시스템 간의 인터페이스를 제공
 - DML의 유형
 <table>
@@ -366,34 +366,34 @@ FROM 테이블명
 </thead>
 <tbody>
 <tr>
-<td style="white-space: normal;">UNION</td>
+<td style="white-space: pre;">UNION</td>
 <td style="white-space: normal;">
 <ul>
 <li>두 SELECT문의 조회 결과를 통합하여 모두 출력함</li>
 <li>중복된 행은 한 번만 출력함</li>
 </ul>
 </td>
-<td style="white-space: normal;">합집합</td>
+<td style="white-space: pre;">합집합</td>
 </tr>
 <tr>
-<td style="white-space: normal;">UNION ALL</td>
+<td style="white-space: pre;">UNION ALL</td>
 <td style="white-space: normal;">
 <ul>
 <li>두 SELECT문의 조회 결과를 통합하여 모두 출력함</li>
 <li>중복된 행도 그대로 출력함</li>
 </ul>
 </td>
-<td style="white-space: normal;">합집합</td>
+<td style="white-space: pre;">합집합</td>
 </tr>
 <tr>
-<td style="white-space: normal;">INTERSECT</td>
+<td style="white-space: pre;">INTERSECT</td>
 <td style="white-space: normal;">두 SELECT문의 조회 결과 중 공통된 2행만 출력함</td>
-<td style="white-space: normal;">교집합</td>
+<td style="white-space: pre;">교집합</td>
 </tr>
 <tr>
-<td style="white-space: normal;">EXCEPT</td>
+<td style="white-space: pre;">EXCEPT</td>
 <td style="white-space: normal;">첫 번째 SELECT문의 조회 결과에서 두 번째 SELECT문의 조회 결과를 제외한 행을 출력함</td>
-<td style="white-space: normal;">차집합</td>
+<td style="white-space: pre;">차집합</td>
 </tr>
 </tbody>
 </table>

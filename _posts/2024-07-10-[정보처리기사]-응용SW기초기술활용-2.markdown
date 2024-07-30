@@ -75,7 +75,7 @@ tags: [정보처리기사, 응용 SW 기초 기술 활용]
 
 #### **패킷 교환 방식(Packet Switching)**
 
-- **<span style="background:#fff5b1">메시지를 일정한 길이의 패킷으로 잘라서 전송하는 방ㅅ기</span>**
+- **<span style="background:#fff5b1">메시지를 일정한 길이의 패킷으로 잘라서 전송하는 방식</span>**
 - **가상 회선 방식**
   * 단말기 상호 간에 논리적인 가상 통신 회선을 미리 설정하여 송신지와 수신지 사이의 연결을 확립한 후 에 설정된 경로를 따라 패킷들을 순서적으로 운반하는 방식
   * 정보 전송 전에 제어 패킷에 의해 경로가 설정
@@ -106,7 +106,7 @@ tags: [정보처리기사, 응용 SW 기초 기술 활용]
 
 #### **ICMP(Internet Control Message Protocol, 인터넷 제어 메시지 프로토콜)**
 
-- **<span style="background:#fff5b1">IP와 조합하여 통신중에 발생하는</span> 오류의 처리와 전송 경로 변경 등을 위한 **<span style="background:#fff5b1">제어 메시지를 관리하는 역할</span>**
+- **<span style="background:#fff5b1">IP와 조합하여 통신중에 발생하는</span>** 오류의 처리와 전송 경로 변경 등을 위한 **<span style="background:#fff5b1">제어 메시지를 관리하는 역할</span>**
 - 헤더는 8Byte로 구성
 
 #### **ARP/RARP**

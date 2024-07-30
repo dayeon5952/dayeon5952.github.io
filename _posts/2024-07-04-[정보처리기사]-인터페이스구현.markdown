@@ -84,7 +84,7 @@ tags: [정보처리기사, 인터페이스 구현, ]
 
 #### **AJAX(Asynchronous JavaScript and XML)**
 
-- 자바스크립트(JavaScript)를 사용하여 **<span style="background-color:#fff5b1">클라이어튼와 서버 간에 XML 데이터를 주고 받는 비동기 통신 기술</span>**
+- 자바스크립트(JavaScript)를 사용하여 **<span style="background-color:#fff5b1">클라이어트와 서버 간에 XML 데이터를 주고 받는 비동기 통신 기술</span>**
 - 전체 페이지를 새로 고치지 않고도 웹 페이지 일부 영역만을 업데이트할 수 있음
 
 #### **인터페이스 보안 기능 적용**
@@ -96,7 +96,7 @@ tags: [정보처리기사, 인터페이스 구현, ]
 <th style="white-space: pre;">네트워크<br/>영역</th>
 <td style="white-space: normal;">
 <ul>
-<li>인터페이스 송·수신 간 스니피(Sniffing) 등을 이용한 데이터 탈취 및 변조 위협을 방지하기 위해 네트워크 트래픽에 대한 암호화를 설정</li>
+<li>인터페이스 송·수신 간 스니핑(Sniffing) 등을 이용한 데이터 탈취 및 변조 위협을 방지하기 위해 네트워크 트래픽에 대한 암호화를 설정</li>
 <li>암호화는 인터페이스 아키텍처에 따라 IPSec, SSL, S-HTTP 등의 다양한 방식으로 적용함</li>
 </ul>
 </td>
@@ -107,7 +107,7 @@ tags: [정보처리기사, 인터페이스 구현, ]
 </tr>
 <tr>
 <th style="white-space: pre;">데이터베이스<br/>영역</th>
-<td style="white-space: normal;">데이터베이스, 스키카, 엔티티의 접근 권한과 프로시저(Procedure), 트리거(Trigger) 등 데이터베이스 동작 객체의 보안 취약점에 보안 기능을 적용</td>
+<td style="white-space: normal;">데이터베이스, 스키마, 엔티티의 접근 권한과 프로시저(Procedure), 트리거(Trigger) 등 데이터베이스 동작 객체의 보안 취약점에 보안 기능을 적용</td>
 </tr>
 </table>
 
