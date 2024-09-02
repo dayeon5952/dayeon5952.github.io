@@ -1,7 +1,7 @@
 ---
-title: "[JavaScript, Typescript] JavaScript와 TypeScript"
+title: "[Typescript] JavaScript와 TypeScript"
 date: 2024-08-30 23:12:08 +09:00
-categories: []
+categories: [Typescript]
 tags: [Typescript, Javascript]
 ---
 
