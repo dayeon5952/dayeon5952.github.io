@@ -221,3 +221,166 @@ function promiseFunc() {
     .then(fetchData3)
 }
 ```
+
+#### **에러 처리**
+
+- Promise를 리턴하는 함수의 경우, 에러가 발생하면 catch 메서드를 이용하여 에러를 처리한다.
+- catch 메서드를 사용하지 않는다면 async 함수에서 try-catch 구문을 이용하여 에러를 처리한다.
+
+```javascript
+function fetchData1() {
+  return request()
+  .then((response)=> response.requestData)
+  .catch(error => {
+    // error 발생
+  })
+}
+```
+
+- try-catch 구문으로 async/await 형태 비 동기 코드 에러 처리가 가능하다.
+- catch 절의 e는 Promise의 catch 메서드가 받는 반환 값과 동일하다.
+
+```javascript
+async function asyncFunc() {
+  try {
+    let data1 = await fetchData1()
+    return fetchData2(data1)
+  } catch(e) {
+    console.log("실패 : ", e)
+  }
+}
+```
+
+### **HTTP, REST API**
+
+#### **HTTP(Hypertext Transfer Protocol)**
+
+- Web에서 서버와 클라이언트 간의 통신하는 방법을 정한 것
+- 클라이언트는 웹 브라우저 등 서버로 요청을 보내는 대상
+- 서버는 클라이언트가 요청을 보내기 전까지 대응하지 않음
+- 서버와 클라이언트 사이에는 무수히 많은 요소가 존재
+- HTTP는 이런 존재들 사이의 통신 방법을 규정
+![image](post/HTTP.png)
+
+#### **HTTP Message**
+
+- 서버 주소, 요청 메서드, 상태 코드, target path, 헤더 정보, 바디 정보 등이 포함
+- 요청 메시지, 응답 메시지의 모양이 다름
+- HTTP/1.1 메시지는 사람이 읽을 수 있음
+![image](post/HTTP_Message.png)
+
+#### **HTTP Header**
+
+- HTTP 메시지의 헤더에는 콘텐츠 관련 정보, 인증 관련 정보, 쿠키 정보, 캐시 관련 정보 등 서버와 클라이언트 간 통신 시 필요한 정보를 담는다.
+- 클라이언트 요청 시, 서버 응답 시 모두 헤더에 정보를 담을 수 있다.
+
+#### **HTTP Status**
+
+- HTTP 요청 시, 클라이언트는 요청의 결과에 대한 상태 정보를 얻는다.
+- 200, 400, 500 등 숫자 코드와 OK, NOT FOUND 등의 텍스트로 이루어짐
+- 코드를 이용해 각 결과에 해당하는 행위를 할 수 있음
+
+#### **요청 메서드**
+
+- HTTP에서 클라이언트는 서버로 요청을 보낸다.
+- 요청 시 요청 메서드로 특정 요청에 대한 동작을 정의한다.
+- GET, POST, PUT, PATCH, DELETE, OPTIONS, CONNECT, TRACE 등이 규정됨
+
+#### **REST API(Representational State Transfer API)**
+
+- API(Application Programming Interface)는 사용자가 특정 기능을 사용할 수 있도록 제공하는 함수를 의미한다.
+- REST API는 HTTP의 요청 메서드에 응하는 서버 API와 클라이언트 간 통신의 구조가 지켜야할 좋은 방법을 명시한 것이다.
+- 구체적인 내용으로는 요청 메서드의 의미, URI 설계, 클라이언트의 상태에 대한 동작 등을 정의한다.
+- GET - 리소스 정보를 얻음
+- POST - 리소스를 생성
+- PUT - 리소스를 생성하거나 업데이트
+- DELETE - 리소스를 제거
+
+### **Fetch API**
+
+- 기존 XMLHTTPRequest를 대체하는 HTTP 요청 API
+- ES6에 추가된 Promise를 리턴하도록 정의됨
+- 네트워크 요청 성공 시, Promise는 Response 객체를 resolve한다.
+- 네트워크 요청 실패 시, Promise는 에러를 reject한다.
+
+```javascript
+let result = fetch(serverURL)
+result.then(response => {
+  if(response.ok){
+    // 요청 성공.
+  }
+})
+.catch(error => {
+  // 요청 실패.
+})
+```
+
+#### **Response**
+
+- Response 객체는 결과에 대한 다양한 정보를 담는다.
+- response.ok는 HTTP Status code가 200-299 사이면 true, 그 외 false 이다.
+- response.status는 HTTP status code를 담는다.
+- response.url은 요청한 URL 정보를 담는다.
+
+```javascript
+fetch(serverURL)
+.then(response => {
+  response.ok
+  response.status
+  response.statusText
+  response.url
+  response.bodyUsed
+})
+```
+
+#### **Header**
+
+- response.header로 Response 객체의 헤더 정보를 얻을 수 있다.
+
+```javascript
+fetch(serverURL)
+.then(resp => {
+  for(let [k, v] of resp.headers){
+    console.log(k, v)
+  }
+})
+```
+
+#### **Body 메서드**
+
+- response.json() 메서드는 얻어온 body 정보를 json으로 만드는 Promise를 반환한다.
+- Promise가 resolve 되면 얻어온 body 정보를 읽는다.
+- response.text(), response.blob(), response.formData() 등의 메서드로 다른 형태의 바디를 읽는다.
+
+```javascript
+fetch(serverURL)
+.then(response => {
+  return response.json()
+})
+.then(json => {
+  console.log('body : ', json)
+})
+```
+
+#### **POST 요청**
+
+- fetch(url, options)로 fetch 메서드 옵션을 넣는다.
+- method 필드로 여러 요청 메서드를 활용한다.
+- headers, body 필드를 활용해 서버에 추가 정보를 보낸다.
+
+```javascript
+fetch(serverURL, {
+  method: 'post',
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+    Authentication: 'mysecret'
+  },
+  body: JSON.stringify(formData)
+})
+.then(response => {
+  return response.json()
+})
+.then(json => {
+  console.log('POST요청결과 : ', json)
+})
+```
