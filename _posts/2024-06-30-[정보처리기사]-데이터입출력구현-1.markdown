@@ -20,11 +20,11 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 <tbody>
 <tr>
 <td style="white-space: pre;">외부 스키마</td>
-<td style="white-space: normal;">사용자나 응용 프로그래머가 각 개인의 입장에서 필요로하는 데이터베이스의 논리적 구조를 정의한 것</td>
+<td >사용자나 응용 프로그래머가 각 개인의 입장에서 필요로하는 데이터베이스의 논리적 구조를 정의한 것</td>
 </tr>
 <tr>
 <td style="white-space: pre;">개념 스키마</td>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>데이터베이스의 전체적인 논리적 구조</li>
 <li>모든 응용 프로그램이나 사용자들이 필요로 하는 데이터를 종합한 조직 전체의 데이터베이스로, 하나만 존재함</li>
@@ -33,7 +33,7 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 </tr>
 <tr>
 <td style="white-space: pre;">내부 스키마</td>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>물리적 저장장치의 입장에서 본 데이터베이스 구조</li>
 <li>실제로 저장될 레코드의 형식, 저장 데이터 항목의 표현 방법, 내부 레코드의 물리적 순서 등을 나타냄</li>
@@ -79,15 +79,15 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 <tbody>
 <tr>
 <td style="white-space: pre;">구조(Structure)</td>
-<td style="white-space: normal;">논리적으로 표현된 개체 타입들 간의 관계로서 데이터 구조 및 정적 성질 표현</td>
+<td >논리적으로 표현된 개체 타입들 간의 관계로서 데이터 구조 및 정적 성질 표현</td>
 </tr>
 <tr>
 <td style="white-space: pre;">연산(Operation)</td>
-<td style="white-space: normal;">데이터베이스에 저장된 실제 데이터를 처리하는 작업에 대한 명세로서 데이터베이스를 조작하는 기본 도구</td>
+<td >데이터베이스에 저장된 실제 데이터를 처리하는 작업에 대한 명세로서 데이터베이스를 조작하는 기본 도구</td>
 </tr>
 <tr>
 <td style="white-space: pre;">제약 조건(Constraint)</td>
-<td style="white-space: normal;">데이터베이스에 저장될 수 있는 실제 데이터의 논리적인 제약 조건</td>
+<td >데이터베이스에 저장될 수 있는 실제 데이터의 논리적인 제약 조건</td>
 </tr>
 </tbody>
 </table>
@@ -108,54 +108,54 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 <img src='post/ER다이어그램_사각형.png'>
 </td>
 <td style="white-space: pre;">사각형</td>
-<td style="white-space: normal;">개체(Entity) 타입</td>
+<td >개체(Entity) 타입</td>
 </tr>
 <tr>
 <td class="text-center">
 <img src='post/ER다이어그램_마름모.png'>
 </td>
 <td style="white-space: pre;">마름모</td>
-<td style="white-space: normal;">관계(Relationship) 타입</td>
+<td >관계(Relationship) 타입</td>
 </tr>
 <tr>
 <td class="text-center">
 <img src='post/ER다이어그램_타원.png'>
 </td>
 <td style="white-space: pre;">타원</td>
-<td style="white-space: normal;">속성(Attribute)</td>
+<td >속성(Attribute)</td>
 </tr>
 <tr>
 <td class="text-center">
 <img src='post/ER다이어그램_이중타원.png'>
 </td>
 <td style="white-space: pre;">이중 타원</td>
-<td style="white-space: normal;">다중값 속성(복합 속성)</td>
+<td >다중값 속성(복합 속성)</td>
 </tr>
 <tr>
 <td class="text-center">
 <img src='post/ER다이어그램_밑줄타원.png'>
 </td>
 <td style="white-space: pre;">밑줄 타원</td>
-<td style="white-space: normal;">기본키 속성</td>
+<td >기본키 속성</td>
 </tr>
 <tr>
 <td class="text-center">
 <img src='post/ER다이어그램_복수타원.png'>
 </td>
 <td style="white-space: pre;">복수 타원</td>
-<td style="white-space: normal;">복합 속성</td>
+<td >복합 속성</td>
 </tr>
 <tr>
 <td class="text-center">
 <img src='post/ER다이어그램_관계.png'>
 </td>
 <td style="white-space: pre;">관계</td>
-<td style="white-space: normal;">1:1, 1:N, N:M 등의 개체 간 관계에 대한 대응수를 선 위에 기술</td>
+<td >1:1, 1:N, N:M 등의 개체 간 관계에 대한 대응수를 선 위에 기술</td>
 </tr>
 <tr>
 <td class="text-center"><img src='post/ER다이어그램_선.png'></td>
 <td style="white-space: pre;">선, 링크</td>
-<td style="white-space: normal;">개체 타입과 속성을 연결</td>
+<td >개체 타입과 속성을 연결</td>
 </tr>
 </tbody>
 </table>
@@ -320,19 +320,19 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 <tbody>
 <tr>
 <td style="white-space: pre;">Atomicity(원자성)</td>
-<td style="white-space: normal;">트랜잭션의 연산은 데이터베이스에 모두 반영되도록 완료(Commit)되든지 아니면 전혀 반영되지 않도록 복구(Rollback)되어야 함</td>
+<td >트랜잭션의 연산은 데이터베이스에 모두 반영되도록 완료(Commit)되든지 아니면 전혀 반영되지 않도록 복구(Rollback)되어야 함</td>
 </tr>
 <tr>
 <td style="white-space: pre;">Consistency<br/>(일관성)</td>
-<td style="white-space: normal;">트랜잭션이 그 실행을 성공적으로 완료하면 언제나 일관성 있는 데이터베이스 상태로 변환함</td>
+<td >트랜잭션이 그 실행을 성공적으로 완료하면 언제나 일관성 있는 데이터베이스 상태로 변환함</td>
 </tr>
 <tr>
 <td style="white-space: pre;">Isolation<br/>(독립성, 격리성,<br/>순차성)</td>
-<td style="white-space: normal;">둘 이상의 트랜잭션이 동시에 병행 실행되는 경우 어느 하나의 트랜잭션 실행중에 다른 트랜잭션의 연산이 끼어들 수 없음</td>
+<td >둘 이상의 트랜잭션이 동시에 병행 실행되는 경우 어느 하나의 트랜잭션 실행중에 다른 트랜잭션의 연산이 끼어들 수 없음</td>
 </tr>
 <tr>
 <td style="white-space: pre;">Durability<br/>(영속성, 지속성)</td>
-<td style="white-space: normal;">성공적으로 완료된 트랜잭션의 결과는 시스템이 고장나더라도 영구적으로 반영되어야 함</td>
+<td >성공적으로 완료된 트랜잭션의 결과는 시스템이 고장나더라도 영구적으로 반영되어야 함</td>
 </tr>
 </tbody>
 </table>

@@ -18,11 +18,11 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 <table>
 <tr>
 <th style="white-space: pre;">범위 분할<br/>(Range<br/>Partitioning)</th>
-<td style="white-space: normal;">지정한 열의 값을 기준으로 분할함</td>
+<td >지정한 열의 값을 기준으로 분할함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">해시 분할<br/>(Hash<br/>Partitioning)</th>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>해시 함수를 적용한 결과 값에 따라 데이터를 분할함</li>
 <li>특정 파티션에 데이터가 집중되는 범위 분할의 단점을 보완한 것으로, 데이터를 고르게 분산할 때 유용함</li>
@@ -32,7 +32,7 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 </tr>
 <tr>
 <th style="white-space: pre;">조합 분할<br/>(Composite<br/>Partitioning)</th>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>범위 분할로 분할한 다음 해시 함수를 적용하여 다시 분할하는 방식</li>
 <li>범위 분할한 파티션이 너무 커서 관리가 어려울 때 유용함</li>
@@ -53,11 +53,11 @@ tags: [정보처리기사, 데이터 입·출력 구현]
 <table>
 <tr>
 <th style="white-space: pre;">RTO(Recovery<br/>Time Objective,<br/>목표 복구 시간)</th>
-<td style="white-space: normal;">비상사태 또는 업무 중단 시점으로부터 복구되어 가동될 때까지의 소요 시간을 의미함</td>
+<td >비상사태 또는 업무 중단 시점으로부터 복구되어 가동될 때까지의 소요 시간을 의미함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">RPO(Recovery<br/>Point Objective,<br/>목표 복구 시점)</th>
-<td style="white-space: normal;">비상사태 또는 업무 중단 시점으로부터 데이터를 복구할 수 있는 기준점을 의미함</td>
+<td >비상사태 또는 업무 중단 시점으로부터 데이터를 복구할 수 있는 기준점을 의미함</td>
 </tr>
 </table>
 

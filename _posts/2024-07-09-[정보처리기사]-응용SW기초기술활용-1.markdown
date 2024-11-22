@@ -55,7 +55,7 @@ tags: [정보처리기사, 응용 SW 기초 기술 활용]
 <table>
 <tr>
 <th style="white-space: pre;">연속 할당<br/>기법</th>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>프로그램을 주기억자이체 연속으로 할당하는 기법</li>
 <li>종류 : 단일 분할 할당 기법, 다중 분할 할당 기법</li>
@@ -64,7 +64,7 @@ tags: [정보처리기사, 응용 SW 기초 기술 활용]
 </tr>
 <tr>
 <th  style="white-space: pre;">분산 할당<br/>기법</th>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>프로그램을 특정 단위의 조각으로 나누어 주기억장치 내에서 분산하여 할당하는 기법</li>
 <li>종류 : 페이징 기법, 세그먼테이션 기법</li>

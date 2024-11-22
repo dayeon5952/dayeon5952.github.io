@@ -242,19 +242,19 @@ tags: [정보처리기사, 소프트웨어 개발 보안 구축]
 <table>
 <tr>
 <th style="white-space: pre;">Trin00</th>
-<td style="white-space: normal;">가장 초기 형태의 데몬으로, 주로 UDP Flooding 공격을 수행함</td>
+<td >가장 초기 형태의 데몬으로, 주로 UDP Flooding 공격을 수행함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">TNT(Tribe<br/>Flood Network)</th>
-<td style="white-space: normal;">UDP Flooding 뿐만 아니라 TCP SYN Flood 공격, ICMP 응답 요청, 스머핑 공격 등을 수행함</td>
+<td >UDP Flooding 뿐만 아니라 TCP SYN Flood 공격, ICMP 응답 요청, 스머핑 공격 등을 수행함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">TFN2K</th>
-<td style="white-space: normal;">TFN의 확장판임</td>
+<td >TFN의 확장판임</td>
 </tr>
 <tr>
 <th style="white-space: pre;">Stacheldraht</th>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>이전 툴들의 기능을 유지하면서, 공격자, 마스터, 에이전트가 쉽게 노출되지 않도록 암호화된 통신을 수행함</li>
 <li>툴이 자동으로 업데이트됨</li>

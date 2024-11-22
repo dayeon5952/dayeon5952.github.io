@@ -94,7 +94,7 @@ tags: [정보처리기사, 인터페이스 구현, ]
 <table>
 <tr>
 <th style="white-space: pre;">네트워크<br/>영역</th>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>인터페이스 송·수신 간 스니핑(Sniffing) 등을 이용한 데이터 탈취 및 변조 위협을 방지하기 위해 네트워크 트래픽에 대한 암호화를 설정</li>
 <li>암호화는 인터페이스 아키텍처에 따라 IPSec, SSL, S-HTTP 등의 다양한 방식으로 적용함</li>
@@ -103,11 +103,11 @@ tags: [정보처리기사, 인터페이스 구현, ]
 </tr>
 <tr>
 <th style="white-space: pre;">애플리케이션<br/>영역</th>
-<td style="white-space: normal;">소프트웨어 개발 보안 가이드를 참조하여 애플리케이션 코드 상의 보안 취약점을 보안하는 방향으로 애플리케이션 보안 기능을 적용함</td>
+<td >소프트웨어 개발 보안 가이드를 참조하여 애플리케이션 코드 상의 보안 취약점을 보안하는 방향으로 애플리케이션 보안 기능을 적용함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">데이터베이스<br/>영역</th>
-<td style="white-space: normal;">데이터베이스, 스키마, 엔티티의 접근 권한과 프로시저(Procedure), 트리거(Trigger) 등 데이터베이스 동작 객체의 보안 취약점에 보안 기능을 적용</td>
+<td >데이터베이스, 스키마, 엔티티의 접근 권한과 프로시저(Procedure), 트리거(Trigger) 등 데이터베이스 동작 객체의 보안 취약점에 보안 기능을 적용</td>
 </tr>
 </table>
 

@@ -1,0 +1,169 @@
+---
+title: "[SQL] SQL 기본 및 활용 1"
+date: 2024-11-23 00:46:53 +09:00
+categories: [SQL]
+tags: [SQL]
+---
+## **SQL 기본**
+
+### **SQL**
+
+#### **SQL 문장들의 종류**
+
+<table>
+<thead>
+<tr>
+<th >명령어의 종류</th>
+<th >명령어</th>
+<th >설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="text-center" rowspan="2" >데이터 조작어<br/>(DML; Data Manipulation Language)</td>
+<td class="text-center" >SELECT</td>
+<td >데이터베이스에 들어 있는 데이터를 조회하거나 검색하기 위한 명령어를 말하는 것으로 RETRIEVE 라고도 한다.</td>
+</tr>
+<tr>
+<td class="text-center" >INSERT<br/>UPDATE<br/>DELETE</td>
+<td >데이터베이스이 테이블에 들어 있는 데이터에 변형을 가하는 종류의 명령어들을 말한다. 예를 들어 데이터를 테이블에 새로운 행을 집어넣거나, 원하지 않는 데이터를 삭제하거나 수정하는 것들의 명령어들을 DML이라고 부른다.</td>
+</tr>
+<tr>
+<td class="text-center" >
+데이터 정의어<br/>(DDL; Data Definition Language)
+</td>
+<td class="text-center" >CREATE<br/>ALTER<br/>DROP<br/>RENAME</td>
+<td >테이블과 같은 데이터 구조를 정의하는데 사용되는 명령어들로 그러한 구조를 생성하거나 변경하거나 삭제하거나 이름을 바꾸는 데이터 구조와 관련된 명령어들을 DDL이라고 부른다.</td>
+</tr>
+<tr>
+<td class="text-center" >
+데이터 제어어<br/>(DCL; Data Control Language)
+</td>
+<td class="text-center" >
+GRANT<br/>REVOKE
+</td>
+<td>데이터베이스에 접근하고 객체들을 사용하도록 권한을 주고 회수하는 명령어를 DCL이라고 부른다.</td>
+</tr>
+<tr>
+<td class="text-center" >트랜잭션 제어어<br>(TCL; Transaction Control Language)</td>
+<td class="text-center">
+COMMIT<br/>ROLLBACK
+</td>
+<td>논리적인 작업의 단위를 묶어서 DML에 의해 조작된 결과를 작업단위(트랜잭션) 별로 제어하는 명령어를 말한다.</td>
+</tr>
+</tbody>
+</table>
+
+#### **데이터 조작어**
+
+- 비절차적 데이터 조작어(DML)는 사용자가 무슨 데이터를 원하는지만 명세함
+- 절차적 데이터 조작어는 어떻게 데이터를 접근해야 하는지 명세함
+- 호스트 프로그램 속에 삽입되어 사용되는 DML 명령어들을 데이터 부속어(Data Sub Language)라고 한다.
+
+### **DDL**
+
+#### **CREATE**
+
+<p style="background-color: #fff5b1; font-weight: bold;">ON DELETE [옵션] CASCADE, RESTRICT, SET NULL, SET DEFAULT, NO ACTION</p>
+
+| **Insert Action** | **설명**                                                             |
+| :---------------: | :------------------------------------------------------------------- |
+|   **Automatic**   | Master 테이블에 PK가 없는 경우 Master PK를 생성 후 Child 입력        |
+|   **Dependent**   | Master 테이블에 PK가 존재할 때만 Childe 입력 허용                    |
+|   **SET NULL**    | Master 테이블에 PK가 없는 경우 Child 외부키를 Null 값으로 처리       |
+|  **SET DEFAULT**  | Master 테이블에 PK가 없는 경우 Child 외부키를 지정된 기본값으로 입력 |
+|   **NO ACTION**   | 참조무결성을 위반하는 입력 액션을 취하지 않음                        |
+
+| **Delete(/Modify) Action** | **설명**                                            |
+| :------------------------: | :-------------------------------------------------- |
+|        **CASCADE**         | Master 삭제 시 Child 같이 삭제                      |
+|        **RESTRICT**        | Child 테이블에 PK 값이 없는 경우만 Master 삭제 허용 |
+|        **SET NULL**        | Master 삭제 시 Child 해당 필드 Null                 |
+|      **SET DEFAULT**       | Master 삭제 시 Child 해당 필드 Default 값으로 설정  |
+|       **NO ACTION**        | 참조무결성을 위반하는 삭제/수정 액션을 취하지 않음  |
+
+테이블명과 칼럼명은 반드시 문자로 싲가해야 하며 A-Z, a-z, 0-9, _, $, # 문자만 허용된다.
+
+#### **제약조건의 종류**
+
+|         **구분**         | **설명**                                                                                                                                                                                                                                                                                                         |
+| :----------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| PRIMARY KEY<br/>(기본키) | 테이블에 저장된 행 데이터를 고유하게 식별하기 위해 기본키를 정의한다. 하나의 테이블에 하나의 기본키 제약만 정의할 수 있다.<br/> 기본키 제약을 정의하면 DBMS는 자동으로 UNIQUE 인덱스를 생성하며, 기본키를 구성하는 칼럼에는 NULL을 입력할 수 없다.<br/> 결국 '기본키 제약 = 교육키 제약 & NOT NULL 제약'이 된다. |
+| UNIQUE KEY<br/>(고유키)  | 테이블에 저장된 행 데이터를 고유하게 식별하기 위한 고유키를 정의한다. 단, NULL은 고유키 제약의 대상이 아니므로, NULL 값을 가진 행이 여러 개가 있더라도 고유키 제약 위반이 되지 않는다.                                                                                                                           |
+|         NOT NULL         | NULL 값의 입력을 금지한다. 디폴트 상태에서는 모든 칼럼에서 NULL을 허가하고 있지만, 이 제약을 지정하믕로써 해당 칼럼은 입력 필수가 된다. NOT NULL을 CHECK의 일부분으로 이해할 수도 있다.                                                                                                                          |
+|          CHECK           | 입력할 수 있는 값의 범위 등을 제한한다. CHECK 제약으로는 TRUE or FALSE로 평가할 수 있는 논리식을 지정한다.                                                                                                                                                                                                       |
+| FOREIGN KEY<br/>(외래키) | 관계형 데이터베이스에서 테이블 간의 관계를 정의하기 위해 기본키를 다른 테이블의 외래키로 복사하는 경우 외래키가 생성된다.<br/>외래키 지정 시 참조 무결성 제약 옵션을 선택할 수 있다.                                                                                                                             |
+
+<span style="background-color:#fff5b1;">ORACLE의 CHECK 조건을 만족하지 못할 경우 에러가 나나 NULL은 무시됨</span>
+
+*SQL SERVER : IDENTITY[ ( seed, increment ) ]
+
+- SEED : 첫 번째 행이 입력될 때의 시작값
+- increment : 증가되는 값
+- 해당 컬럼에 값을 넣는 경우 Error 발생
+
+#### **ALTER TABLE**
+
+<span style="background-color:#fff5b1;">명령어 전체 정리</span>
+
+**DROP COLUMN(칼럼 삭제)**
+```SQL
+ALTER TABLE 테이블명 DROP COLUMN 삭제할 칼럼명;
+```
+
+**MODIFY COLUMN(칼럼 수정)**
+```SQL
+[Oracle]
+ALTER TABLE 테이블명 MODIFY (칼럼명1 데이터유형 [DEFAULT 식] [NOT NULL], 칼럼명2 데이터유형 ...);
+
+[SQL Server]
+ALTER TABLE 테이블명 ALTER 칼럼명1 데이터유형 [DEFAULT 식] [NOT NULL];
+LATER TABLE 테이블명 ALTER 칼럼명2 데이터유형 [DEFAULT 식] [NOT NULL];
+```
+
+SQL Server에서는 여러 개의 칼럼을 동시에 수정하는 구문은 지원하지 않는다.
+또한 SQL Server에서는 괄호를 사용하지 않는다.
+NOT NULL 구문을 지정하지 않으면, 기존의 NOT NULL 제약조건이 NULL로 변경되므로 주의해야 한다.
+
+**ADD CONSTRAINT**
+```SQL
+ALTER TABLE 테이블명 ADD CONSTRAINT 제약조건명 제약조건 (칼럼명);
+[예제] ALTER TABLE PLAYER ADD CONSTRAINT PLAYER_FK FOREIGN KEY (TEAM_ID) REFERENCES TEAM(TEAM_ID);
+[예제] ALTER TABLE PRODUCT ADD CONSTRAINT PRODUCT_PK PRIMARY KEY (PROD_ID);
+```
+
+#### **RENAME TABLE**
+
+```SQL
+[ANSI 표준 기준/Oracle]
+RENAME 변경전 테이브명 T0 변경후 테이블명;
+[SQL Server]
+sp_rename 변경전 테이블명, 변경후 테이블명;
+```
+
+#### **TRUNCATE TABLE**
+
+TRUNCATE TABLE은 테이블 자체가 삭제되는 것이 아니고, 해당 테이블에 들어있던 모든 행들이 제거되고 저장 공간을 재사용 가능하도록 해제한다. 테이블 구조를 완전히 삭제하기 위해서는 DROP TABLE을 실행하면 된다.
+
+### **DML**
+
+#### **DELETE**
+
+테이블이 전체 데이터를 삭제하는 경우, 시스템 활용 측면에서는 삭제된 데이터를 로그로 저장하는 DELETE TABLE보다는 시스템 부하가 적은 TRUNCATE TABLE을 권고한다. 단, TRUNCATE TABLE의 경우 에도 삭제된 데이터의 로그가 없으므로 ROLLBACK이 불가능하므로 주의해야 한다.
+
+### **테이블 삭제비교**
+
+|                       |                 **DROP**                 |                                   **TRUNCATE**                                   |                          **DELETE**                           |
+| :-------------------: | :--------------------------------------: | :------------------------------------------------------------------------------: | :-----------------------------------------------------------: |
+|    **명령어 종류**    |                   DDL                    |                             DDL(일부 DML 성격 가짐)                              |                              DML                              |
+| **Rollback 가능여부** |             Rollback 불가능              |                                 Rollback 불가능                                  |                   Commit 이전 Rollback 가능                   |
+|      **Commit**       |               Auto Commit                |                                   Auto Commit                                    |                         사용자 Commit                         |
+|      **Storage**      | 테이블이 사용했던 Storage를 모두 Release | 테이블이 사용했던 Storage 중 최초 테이블 생성 시 할당된 Storage만 남기고 Release | 데이터를 모두 Delete해도 사용했던 Storage는 Release 되지 않은 |
+|     **삭제방식**      |    테이블의 정의 자체를 완전히 삭제함    |                      테이블을 최초 생성된 초기 상태로 만듬                       |                         데이터만 삭제                         |
+
+### **DCL**
+
+DBA(Database Administration) 권한은 SYSTEM, SYS 등의 상위 유저와 그에 해당하는 권한을 가진 경우 부여 가능하다.
+사용자가 실행하는 모든 DDL 문장(CREATE, ALTER, DROP, RENAME 등)은 그에 해당하는 적절한 권한이 있어야만 문장을 실행할 수 있다.
+
+### **DCL**

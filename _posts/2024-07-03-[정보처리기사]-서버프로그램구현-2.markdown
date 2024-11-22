@@ -115,15 +115,15 @@ tags: [정보처리기사, 서버 프로그램 구현]
 <table>
 <tr>
 <th style="white-space: pre;">함수와 객체</th>
-<td style="white-space: normal;">클래스나 메소드 단위의 소스 코드를 재사용함</td>
+<td >클래스나 메소드 단위의 소스 코드를 재사용함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">컴포넌트</th>
-<td style="white-space: normal;">컴포넌트 자체에 대한 수정 없이 인터페이스를 통해 통신하는 방식으로 재사용함</td>
+<td >컴포넌트 자체에 대한 수정 없이 인터페이스를 통해 통신하는 방식으로 재사용함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">애플리케이션</th>
-<td style="white-space: normal;">공통된 기능들을 제공하는 애플리케이션을 공유하는 방식으로 재사용함</td>
+<td >공통된 기능들을 제공하는 애플리케이션을 공유하는 방식으로 재사용함</td>
 </tr>
 </table>
 
@@ -270,23 +270,23 @@ tags: [정보처리기사, 서버 프로그램 구현]
 <table>
 <tr>
 <th style="white-space: pre;">대용량 데이터</th>
-<td style="white-space: normal;">대량의 데이터를 가져오거나,전달하거나, 계산하는 등의 처리가 가능해야 함</td>
+<td >대량의 데이터를 가져오거나,전달하거나, 계산하는 등의 처리가 가능해야 함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">자동화</th>
-<td style="white-space: normal;">심각한 오류가 발생하는 상황을 제외하고는 사용자의 개입 없이 수행되어야 함</td>
+<td >심각한 오류가 발생하는 상황을 제외하고는 사용자의 개입 없이 수행되어야 함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">견고성</th>
-<td style="white-space: normal;">잘못된 데이터나 데이터 중복 등의 상황으로 중단되는 일 없이 수행되어야 함</td>
+<td >잘못된 데이터나 데이터 중복 등의 상황으로 중단되는 일 없이 수행되어야 함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">안정성/신뢰성</th>
-<td style="white-space: normal;">오류가 발생하면 오류의 발생 위치, 시간 등을 추적할 수 있어야 함</td>
+<td >오류가 발생하면 오류의 발생 위치, 시간 등을 추적할 수 있어야 함</td>
 </tr>
 <tr>
 <th style="white-space: pre;">성능</th>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>다른 응용 프로그램의 수행을 방해하지 않아야 함</li>
 <li>지정된 시간 내에 처리가 완료되어야 함</li>

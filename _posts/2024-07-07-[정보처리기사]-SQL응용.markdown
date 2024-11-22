@@ -154,20 +154,20 @@ REVOKE [GRANT OPTION FOR] 권한_리스트 ON 개체 FROM 사용자 [CASCADE];
 </thead>
 <tbody>
 <tr>
-<td style="white-space: normal;">SELECT</td>
-<td style="white-space: normal;">테이블에서 튜플을 검색함</td>
+<td >SELECT</td>
+<td >테이블에서 튜플을 검색함</td>
 </tr>
 <tr>
-<td style="white-space: normal;">INSERT</td>
-<td style="white-space: normal;">테이블에 새로운 튜플을 삽입함</td>
+<td >INSERT</td>
+<td >테이블에 새로운 튜플을 삽입함</td>
 </tr>
 <tr>
-<td style="white-space: normal;">DELETE</td>
-<td style="white-space: normal;">테이블에서 튜플을 삭제함</td>
+<td >DELETE</td>
+<td >테이블에서 튜플을 삭제함</td>
 </tr>
 <tr>
-<td style="white-space: normal;">UPDATE</td>
-<td style="white-space: normal;">테이블에서 튜플의 내용을 갱신함</td>
+<td >UPDATE</td>
+<td >테이블에서 튜플의 내용을 갱신함</td>
 </tr>
 </tbody>
 </table>
@@ -306,32 +306,32 @@ GROUP BY절에 지정된 그룹별로 속성의 값을 집계할 때 사용됨
 </thead>
 <tbody>
 <tr>
-<td style="white-space: normal;">COUNT(속성명)</td>
-<td style="white-space: normal;">그룹별 튜플 수를 구하는 함수</td>
+<td >COUNT(속성명)</td>
+<td >그룹별 튜플 수를 구하는 함수</td>
 </tr>
 <tr>
-<td style="white-space: normal;">SUM(속성명)</td>
-<td style="white-space: normal;">그룹별 합계를 구하는 함수</td>
+<td >SUM(속성명)</td>
+<td >그룹별 합계를 구하는 함수</td>
 </tr>
 <tr>
-<td style="white-space: normal;">AVG(속성명)</td>
-<td style="white-space: normal;">그룹별 평균을 구하는 함수</td>
+<td >AVG(속성명)</td>
+<td >그룹별 평균을 구하는 함수</td>
 </tr>
 <tr>
-<td style="white-space: normal;">MAX(속성명)</td>
-<td style="white-space: normal;">그룹별 최대값을 구하는 함수</td>
+<td >MAX(속성명)</td>
+<td >그룹별 최대값을 구하는 함수</td>
 </tr>
 <tr>
-<td style="white-space: normal;">MIN(속성명)</td>
-<td style="white-space: normal;">그룹별 최소값을 구하는 함수</td>
+<td >MIN(속성명)</td>
+<td >그룹별 최소값을 구하는 함수</td>
 </tr>
 <tr>
-<td style="white-space: normal;">STDDEV(속성)</td>
-<td style="white-space: normal;">그룹별 표준편차를 구하는 함수</td>
+<td >STDDEV(속성)</td>
+<td >그룹별 표준편차를 구하는 함수</td>
 </tr>
 <tr>
-<td style="white-space: normal;">VARIANCE(속성명)</td>
-<td style="white-space: normal;">그룹별 분산을 구하는 함수</td>
+<td >VARIANCE(속성명)</td>
+<td >그룹별 분산을 구하는 함수</td>
 </tr>
 </tbody>
 </table>
@@ -367,7 +367,7 @@ FROM 테이블명
 <tbody>
 <tr>
 <td style="white-space: pre;">UNION</td>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>두 SELECT문의 조회 결과를 통합하여 모두 출력함</li>
 <li>중복된 행은 한 번만 출력함</li>
@@ -377,7 +377,7 @@ FROM 테이블명
 </tr>
 <tr>
 <td style="white-space: pre;">UNION ALL</td>
-<td style="white-space: normal;">
+<td >
 <ul>
 <li>두 SELECT문의 조회 결과를 통합하여 모두 출력함</li>
 <li>중복된 행도 그대로 출력함</li>
@@ -387,12 +387,12 @@ FROM 테이블명
 </tr>
 <tr>
 <td style="white-space: pre;">INTERSECT</td>
-<td style="white-space: normal;">두 SELECT문의 조회 결과 중 공통된 2행만 출력함</td>
+<td >두 SELECT문의 조회 결과 중 공통된 2행만 출력함</td>
 <td style="white-space: pre;">교집합</td>
 </tr>
 <tr>
 <td style="white-space: pre;">EXCEPT</td>
-<td style="white-space: normal;">첫 번째 SELECT문의 조회 결과에서 두 번째 SELECT문의 조회 결과를 제외한 행을 출력함</td>
+<td >첫 번째 SELECT문의 조회 결과에서 두 번째 SELECT문의 조회 결과를 제외한 행을 출력함</td>
 <td style="white-space: pre;">차집합</td>
 </tr>
 </tbody>
