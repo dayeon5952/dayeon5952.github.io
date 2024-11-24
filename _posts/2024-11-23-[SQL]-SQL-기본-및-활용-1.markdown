@@ -166,4 +166,289 @@ TRUNCATE TABLE은 테이블 자체가 삭제되는 것이 아니고, 해당 테�
 DBA(Database Administration) 권한은 SYSTEM, SYS 등의 상위 유저와 그에 해당하는 권한을 가진 경우 부여 가능하다.
 사용자가 실행하는 모든 DDL 문장(CREATE, ALTER, DROP, RENAME 등)은 그에 해당하는 적절한 권한이 있어야만 문장을 실행할 수 있다.
 
-### **DCL**
+### **TCL**
+
+#### **트랜잭션의 특징**
+
+|        **특성**         | **설명**                                                                                                                  |
+| :---------------------: | :------------------------------------------------------------------------------------------------------------------------ |
+|  **원자성(Atomicity)**  | 트랜잭션에서 정의된 연산들은 모두 성공적으로 실행되던지 아니면 전혀 실행되지 않은 상태로 남아있어야 한다.(All or Nothing) |
+| **일관성(Consistency)** | 트랜잭션이 실행되기 전의 DB 내용이 잘못되어 있지 않다면 트랜잭션이 실행된 이후에도 DB의 내용에 잘못이 있으면 안 된다.     |
+|  **고립성(Isolation)**  | 트랜잭션이 실행되는 도중에 다른 트랜잭션의 영향을 받아 잘못된 결과를 만들어서는 안된다.                                   |
+| **지속성(Durability)**  | 트랜잭션이 성공적으로 수행되면 그 트랜잭션이 갱신한 DB의 내용은 영구적으로 저장된다.                                      |
+
+#### **트랜잭션에 대한 격리성이 낮은 경우 발생할 수 있는 문제점**|
+
+| **Dirty Read**|다른 트랜잭션에 의해 수정되었지만 아직 커밋되지 않은 데이터를 읽는 것|
+|**Non-Repeatable Read**|한 트랜잭션 내에서 같은 쿼리를 두 번 수행했는데, 그 사이에 다른 트랜잭션이 값을 수정 또는 삭제하는 바람에 두 쿼리 결과가 다르게 나타나는 현상|
+| **Phantom Read**|한 트랜잭션 내에서 같은 쿼리를 두 번 수행했는데, 첫 번째 쿼리에서 없던 유령(Phantom) 레코드가 두 번째 쿼리에서 나타나는 현상|
+
+#### **COMMIT**
+
+**<span style="background-color:#fff5b1;">Oracle에서는 DDL 문자 수행 후 자동으로 COMMIT을 수행한다. (AUTO
+COMMIT이 FALSE로 설정되어 있어도)</span>**
+BEGIN TRANSACTION(BEGIN TRAN 구문도 가능)으로 트랜잭션을 시작하고 COMMIT TRANSACTION(TRANSACTION은 생략 가능) 또는 ROLLBACK TRANSACTION(TRANSACTION은 생략 가능)으로 트랜잭션을 종료한다. ROLLBACK 구문을 만나면 최초의 BEGIN TRANSACTION 시점까지 모두 ROLLBACK이 수행된다.
+
+#### **ROLLBACK**
+
+테이블 내 입력한 데이터나, 수정한 데이터, 삭제한 데이터에 대하여 COMMIT 이전에는 변경 사항을 취소할 수 있는데 데이터베이스에서는 롤백(ROLLBACK) 기능을 사용한다. 롤백(ROLLBACK)은 데이터 변경 사항이 취소되어 데이터의 이전 상태로 복구되며, 관련된 행에 대한 잠금(LOCKING)이 풀리고 다른 사용자들이 데이터 변경을 할 수 있게 된다.
+
+#### **SAVEPOINT**
+
+저장점(SAVEPOINT)을 정의하면 롤백(ROLLBACK)할 때 트랜잭션에 포함된 전체 작업을 롤백하는 것이 아니라 현 시점에서 SAVEPOINT까지 트랜잭션의 일부만 롤백할 수 있다.
+
+### **WHERE**
+
+#### **연산자의 종류**
+
+<table>
+<thead>
+<tr class="text-center">
+<th>구분</th>
+<th>연산자</th>
+<th>연산자의 의미</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td rowspan="5" class="text-center" style="white-space: nowrap;">
+비교 연산자
+</td>
+<td  class="text-center" style="white-space: nowrap;">=</td>
+<td>같다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">></td>
+<td>보다 크다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">>=</td>
+<td>보다 크거나 같다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;"><</td>
+<td>보다 작다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;"><=</td>
+<td>보다 작거나 같다.</td>
+</tr>
+<tr>
+<td rowspan="4" class="text-center" style="white-space: nowrap;">SQL 연산자</td>
+<td class="text-center" style="white-space: nowrap;">BETWEEN a AND b</td>
+<td>a와 b의 값 사이에 있으면 된다.(a와 b 값이 포함됨)</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">IN (list)</td>
+<td>리스트에 있는 값 중에서 어느 하나라도 일치하면 된다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">LIKE '비교문자열'</td>
+<td>비교문자열과 형태가 일치하면 된다.(%, _ 사용)</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">IS NULL</td>
+<td>NULL 값인 경우</td>
+</tr>
+<tr>
+<td rowspan="3" class="text-center" style="white-space: nowrap;">논리 연산자</td>
+<td class="text-center" style="white-space: nowrap;">AND</td>
+<td>앞에 있는 조건과 뒤에 오는 조건이 참(TRUE)이 되면 결과도 참(TRUE)이 된다. 즉, 앞의 조건과 뒤의 조건을 동시에 만족해야 한다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">OR</td>
+<td>앞의 조건이 참(TRUE)이거나 뒤의 조건이 참(TRUE)이 되어야 결과도 참(TRUE)이 된다. 즉, 앞뒤의 조건 중 하나만 참(TRUE)이면 된다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">NOT</td>
+<td>뒤에 오는 조건에 반대되는 결과를 되돌려 준다.</td>
+</tr>
+<tr>
+<td rowspan="5" class="text-center" style="white-space:nowrap;">부정 비교 연산자</td>
+<td class="text-center" style="white-space: nowrap;">!=</td>
+<td>같지 않다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">^=</td>
+<td>같지 않다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;"><></td>
+<td>같지 않다.(ISO 표준, 모든 운영체제에서 사용 가능</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">NOT 칼럼명 =</td>
+<td>~와 같지 않다.</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">NOT 칼럼명 ></td>
+<td>~보다 크지 않다.</td>
+</tr>
+<tr>
+<td rowspan="3" class="text-center"  style="white-space: nowrap;">부정 SQL 연산자</td>
+<td class="text-center" style="white-space: nowrap;">NOT BETWEEN a AND b</td>
+<td>a와 b의 값 사이에 있지 않다.(a, b 값을 포함하지 않는다.)</td>
+</tr>
+<tr>
+<td class="text-center" style="white-space: nowrap;">NOT IN (list)</td>
+<td>list 값과 일치하지 않는다.</td>
+</tr>
+<tr>
+<td class="text-center"  style="white-space: nowrap;">IS NOT NULL</td>
+<td>NULL 값을 갖지 않는다.</td>
+</tr>
+</tbody>
+</table>
+
+#### **문자 유형 비교**
+
+CHAR 타입인 경우 길이가 다르다면 작은 쪽에 SPACE를 추가하여 길이를 같게 한 후에 비교한다.
+
+|**ANY(서브쿼리)**|- 서브쿼리의 결과에 존재하는 어느 하나의 값이라도 만족하는 조건을 의미<br/> - 비교연산자로 ">"를 사용했다면 메인쿼리는 서브쿼리의 값들 중 어떤 값이라도 만족하면 되므로 서브쿼리의 결과의 최솟값보다 큰 모든 건이 조건을 만족<br/> - SOME과 동일|
+|**ALL(서브쿼리)**|- 서브쿼리의 결과에 존재하는 모든값을 만족하는 조건을 의미.<br/> - 비교연산자로 ">"를 사용했다면 메인쿼리는 서브쿼리의 모든 값을 만족해야 하므로 서브쿼리의 결과의 최댓값보다 큰 모든 건이 조건을 만족|
+
+#### **연산자의 우선순위**
+
+| **연산 우선순위** |           **설명**           |
+| :---------------: | :--------------------------: |
+|         1         |            괄호()            |
+|         2         |          NOT 연산자          |
+|         3         | 비교 연산자, SQL 비교 연산자 |
+|         4         |             AND              |
+|         5         |              OR              |
+
+### **NULL**
+
+NULL(ASCII 코드 00번)은 공백(BLANK, ASCII 코드 32번)이나 숫자 0(ZERO, ASCII 48)과는 전혀 다른 값이며, 조건에 맞는 데이터가 없을 때의 공집합과도 다르다. 'NULL'은 '아직 정의되지 않은 미지의 값'이거나 '현재 데이터를 입력하지 못하는 경우'를 의미한다.
+
+#### **NULL의 연산**
+
+- NULL 값과의 연산(+, -, *, / 등)은 NULL 값을 리턴
+- NULL 값과의 비교연산(=, >, >=, <, <=)을 통해서 비교할 수도 없고, 비교연산을 하더라도 결과는 거짓(FALSE)를 리턴
+- 어떤 값과 비교할 수도 없으며, 특정값보다 크다, 작다라고 표현할 수 없다.
+- 비교가 불가하기 때문에 =, !=와 같은 비교연산자가 아닌 IS NULL, IS NOT NULL이라는 키워드를 사용해야 한다.
+
+**<span style="background-color:#fff5b1;">ORACLE VARCHAR에 ''(공백)이 들어갈 경우 NULL이 됨. SQL SERVER는 VARCHAR에 ''(공백)이 들어갈 경우 그대로 공백으로 들어감.</span>**<br/>
+**<span style="background-color:#fff5b1;">IN과 NOT IN의 NULL 연산</span>**
+
+#### **단일 행 NULL 관련 함수의 종류**
+
+| **일반형 함수**                                        | **함수 설명**                                                                                                                                                                 |
+| :----------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| NVL(표현식1, 표현식2) /<br/> ISNULL(표현식 1, 표현식2) | 표현식1의 결과값이 NULL이면 표현식2의 값을 출력한다.<br/>단, 표현식1과 표현식2의 결과 데이터 타입이 같아야 한다.<br/>NULL 관련 가장 많이 사용되는 함수이므로 상당히 중요하다. |
+| NULLIF(표현식1, 표현식2)                               | 표현식1이 표현식2와 같으면 NULL을, 같지 않으면 표현식1을 리턴한다.                                                                                                            |
+| COALESCE(표현식1, 표현식2, ·····)                      | 임의의 개수 표현식에서 NULL이 아닌 최초의 표현식을 나타낸다.<br/>모든 표현식이 NULL이라면 NULL을 리턴한다.                                                                    |
+
+※ 주: Oracle함수/SQL Server함수 표시. '/' 없는 것은 공통 함수
+
+#### **집계함수와 NULL**
+
+<span style="background-color: #fff5b1;">NULL은 AVG 연산 대상에서 제외됨</span>
+
+
+### **집계 함수**
+
+#### **집계 함수의 종류**
+
+| **집계 함수**                    | **사용 목적**                                                       |
+| -------------------------------- | ------------------------------------------------------------------- |
+| COUNT(*)                         | NULL 값을 포함한 행의 수를 출력한다.                                |
+| COUNT(표현식)                    | 표현식의 값이 NULL 값인 것을 제외한 행의 수를 출력한다.             |
+| SUM([DISTINCT \| ALL] 표현식)    | 표현식의 NULL 값을 제외한 합계를 출력한다.                          |
+| AVG([DISTINCT \| ALL] 표현식)    | 표현식의 NULL 값을 제외한 평균을 출력한다.                          |
+| MAX([DISTINCT \| ALL] 표현식)    | 표현식의 최대값을 출력한다.<br/>(문자, 날짜 데이터 타입도 사용가능) |
+| MIN([DISTINCT \| ALL] 표현식)    | 표현식의 최소값을 출력한다.<br/>(문자, 날짜 데이터 타입도 사용가능) |
+| STDDEV([DISTINCT \| ALL] 표현식) | 표현식의 표준 편차를 출력한다.                                      |
+| VARIAN([DISTINCT \| ALL] 표현식) | 표현식의 분산을 출력한다.                                           |
+| 기타 통계 함수                   | 벤더별로 다양한 통계식을 제공한다.                                  |
+
+#### **GROUP BY절과 HAVING절의 특성**
+
+- GROUP BY절을 통해 소그룹별 기준을 정한 후, SELECT절에 집계 함수를 사용한다.
+- 집계 함수의 통계 정보는 NULL값을 가진 행을 제외하고 수행한다.
+- GROUP BY절에서는 SELECT절과는 달리 ALIAS명을 사용할 수 없다.
+- 집계 함수는 WHERE절에는 올 수 없다.(집계 함수를 사용할 수 있는 GROUP BY절보다 WHERE절이 먼저 수행된다.)
+- WHERE절은 전체 데이터를 GROUP으로 나누기 전에 행들을 미리 제거시킨다.
+- HAVING절은 GROUP BY절의 기준 항목이나 소그룹의 집계 함수를 이용한 조건을 표시할 수 있다.
+- GROUP BY절에 의한 소그룹별로 만들어진 집계 데이터 중, HAVING절에서는 제한 조건을 두어 조건을 만족하는 내용만 출력한다.
+- HAVING절은 일반적으로 GROUP BY절 뒤에 위치한다.
+
+#### **HAVING절**
+
+테이블 전체가 한 개의 그룹이 되는 경우 GROUP BY 없이 단독 HAVING이 올 수 있다.
+
+### **ORDER BY절**
+
+#### **ORDER BY절 특징**
+
+- 기본적인 정렬 순서는 오름차순(ASC)이다.
+- 숫자형 데이터 타입은 오름차순으로 정렬했을 경우에 가장 작은 값부터 출력된다.
+- 날짜형 데이터 타입은 오름차순으로 정렬했을 경우 날짜 값이 가장 빠른 값이 먼저 출력된다.
+- Oracle에서는 NULL 값을 가장 큰 값으로 간주하여 오름차순으로 정렬했을 경우에는 가장 마지막에, 내림차순으로 정렬했을 경우에는 가장 먼저 위치한다.
+- 반면, SQL Server에서는 NULL 값을 가장 작은 값으로 간주하여 오름차순으로 정렬했을 경우에는 가장 먼저, 내림차순으로 정렬했을 경우에는 가장 마지막에 위치한다.
+
+#### **SELECT 실행 순서**
+
+1. 발췌 대상 테이블을 참조한다.(FROM)
+2. 발췌 대상 데이터가 아닌 것은 제거한다.(WHERE)
+3. 행들을 소그룹화한다.(GROUP BY)
+4. 그룹핑된 값의 조건에 맞는 것만을 출력한다.(HAVING)
+5. 데이터 값을 출력/계산한다.(SELECT)
+6. 데이터를 정렬한다.(ORDER BY)
+
+#### **TOP N 쿼리**
+
+WITH TIES 옵션은 ORDER BY절의 조건 기준으로 TOP N의 마지막 행으로 표시되는 추가 행의 데이터가 같을 경우 N+ 동일 정렬 순서 데이터를 추가 반환하도록 지정하는 옵션이다.
+
+<span style="background-color:#fff5b1;">ORDER BY 숫자</span>
+
+### **함수**
+
+#### **내장함수**
+
+함수는 벤더에서 제공하는 함수인 내장 함수(Built-in Function)와 사용자가 정의할 수 있는 함수(User Defined Function)로 나눌 수 있다. 내장 함수는 다시 함수의 입력 값이 단일 행 값이 입력되는 단일 행 함수(Single-Row Function)와 여러 행의 값이 입력되는 다중 행 함수(Multi-Row Function)로 나눌 수 있다. 다중 행 함수는 다시 집계 함수(Aggregate Function), 그룹 함수(Group Function), 윈도우 함수(Window Function)로 나눌 수 있다.
+
+#### **단일 행 함수의 종류**
+
+|    **종류**    | **내용**                                        | **함수의 예**                                                                                   |
+| :------------: | :---------------------------------------------- | :---------------------------------------------------------------------------------------------- |
+|  문자형 함수   | 문자를 입력하면 문자나 숫자 값을 반환한다.      | LOWER, UPPER, SUBSTR/SUBSTRING, LENGTH/LEN, LTRIM, RTRIM, TRIM, ASCII                           |
+|  숫자형 함수   | 숫자를 입력하면 숫자 값을 반환한다.             | ABS, MOD, ROUND, TRUNC, SIGN, CHR/CHAR, CEIL/CEILING, FLOOR, EXP, LOG, LN, POWER, SIN, COS, TAN |
+|  날짜형 함수   | DATE 타입의 값을 연산한다.                      | SYSDATE/GETDATE, EXTRACT/DATEPART, TO_NUMBER(TO_CHAR(d, 'YYYY'\|'MM'\|'DD'))/YEAR\|MONTH\|DAY   |
+|  변환형 함수   | 문자, 숫자, 날짜형 값의 데이터 타입을 변환한다. | TO_NUMBER, TO_CHAR, TO_DATE/CAST, CONVERT                                                       |
+| NULL 관련 함수 | NULL을 처리하기 위한 함수                       | NVL/ISNULL, NULLIF, COALESCE                                                                    |
+
+※ 주: Oracle함수/SQL Server함수 표시. '/' 없는 것은 공통 함수
+
+#### **숫자형 함수**
+
+TRUNC(숫자, m) : 숫자를 소수 m 자리에서 잘라서 리턴(m default : 0)<br/>
+ROUND(숫자, m) : 숫자를 소수 m 자리에서 반올림하여 리턴(m default : 0)
+
+#### **결합 함수**
+
+ORACLE : CONCAT / ||<br/>
+SQL Server : +
+
+#### **단일 행 문자형 함수의 종류**
+
+|                   **문자형 함수**                    | **함수 설명**                                                                                                                                                                                                                                                                                                                                            |
+| :--------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|                    LOWER(문자열)                     | 문자열의 알파벳 문자를 소문자로 바꾸어 준다.                                                                                                                                                                                                                                                                                                             |
+|                    UPPER(문자열)                     | 문자열의 알파벳 문자를 대문자로 바꾸어 준다.                                                                                                                                                                                                                                                                                                             |
+|                     ASCII(문자)                      | 문자나 숫자를 ASCII 코드 번호로 바꾸어 준다.                                                                                                                                                                                                                                                                                                             |
+|                 CHR/CHAR(ASCII번호)                  | ASCII 코드 번호를 문자나 숫자로 바꾸어 준다.                                                                                                                                                                                                                                                                                                             |
+|               CONCAT(문자열1, 문자열2)               | Oracle, My SQL에서 유효한 함수이며 문자열1과 문자열2를 연결한다. 합성 연산자 '\|\| '(Oracle)나 '+'(SQL Server)와 동일하다.                                                                                                                                                                                                                               |
+|           SUBSTR/SUBSTRING(문자열, m[, n])           | 문자열 중 m 위치에서 n개의 문자 길이에 해당하는 문자를 돌려준다. n이 생략되면 마지막 문자까지이다.                                                                                                                                                                                                                                                       |
+|                  LENGTH/LEN(문자열)                  | 문자열의 개수를 숫자값으로 돌려준다.                                                                                                                                                                                                                                                                                                                     |
+|              LTRIM(문자열 [, 지정문자])              | 문자열의 첫 문자부터 확인해서 지정 문자가 나타나면 해당 문자를 제거한다.(지정 문자가 생략되면 공백 값이 디폴트)<br/>SQL Server에서는 LTRIM 함수에 지정문자를 사용할 수 없다. 즉, 공백만 제거할 수 있다.                                                                                                                                                  |
+|              RTRIM(문자열 [, 지정문자])              | 문자열의 마지막 문자부터 확인해서 지정 문자가 나타나는 동안 해당 문자를 제거한다.(지정 문자가 생략되면 공백 값이 디폴트)<br/> SQL Server에서는 LTRIM 함수에 지정문자를 사용할 수 없다. 즉, 공백만 제거할 수 있다.                                                                                                                                        |
+| TRIM([leading\|trailing\|both] 지정문자 FROM 문자열) | 문자열에서 머리말, 꼬리말, 또는 양쪽에 있는 지정 문자를 제거한다. (leading                                                                                                                                        \| trailling \| both가 생략되면 both가 디폴트)<br/> SQL Server에서는 TRIM 함수에 지정문자를 사용할 수 없다. 즉, 공백만 제거할 수 있다. |
+
+※ 주: Oracle함수/SQL Server함수 표시. '/' 없는 것은 공통함수
+
+#### **DUAL 테이블의 특성**
+
+- 사용자 SYS가 소유하며 모든 사용자가 액세스 가능한 테이블이다.
+- SELECT ~ FROM ~의 형식을 갖추기 위한 일종의 DUMMY 테이블이다.
+- DUMMY 라는 문자열 유형의 칼럼에 'X'라는 값이 들어 있는 행을 1건 포함하고 있다.
