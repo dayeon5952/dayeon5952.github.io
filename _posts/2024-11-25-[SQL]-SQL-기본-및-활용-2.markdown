@@ -1,0 +1,128 @@
+---
+title: "[SQL] SQL 기본 및 활용 2"
+date: 2024-11-25 23:57:21 +09:00
+categories: [SQL]
+tags: [SQL]
+---
+## **SQL 활용**
+
+### **일반 집합 연산자**
+
+#### **일반 집합 연산자를 SQL과 비교**
+
+- UNION 연산은 UNION 기능으로
+- INTERSECTION 연산은 INTERSECT 기능으로
+- DIFFERENCE 연산은 EXCEPT(Oracle은 MINUS) 기능으로
+- PRODUCT 연산은 CROSS JOIN 기능으로 구현되었다.
+
+### **순수 관계 연산자**
+
+순수 관계 연산자는 관계형 데이터베이스를 구현하기 위해 새롭게 만들어진 연산자로, SELECT, PROJECT, JOIN, DIVIDE가 있다.
+
+#### **순수 관계 연산자와 SQL 문장 비교**
+
+- SELECT 연산은 WHERE 절로 구현되었다.
+- PROJECT 연산은 SELECT 절로 구현되었다.
+- (NATURAL) JOIN 연산은 다양한 JOIN 기능으로 구현되었다.
+- DIVIDE 연산은 현재 사용되지 않는다.
+
+### **FROM절 JOIN 형태**
+
+#### **ANSI/ISO SQL에서 표시하는 FROM절의 JOIN 형태**
+
+- INNER JOIN
+- NATURAL JOIN
+- USING 조건절
+- ON 조건절
+- CROSS JOIN
+- OUTER JOIN(LEFT, RIGHT, FULL)
+
+#### **INNER JOIN**
+
+INNER JOIN은 OUTER(외부) JOIN과 대비하여 내부 JOIN이라고 하며 JOIN 조건에서 동일한 값이 있는 행만 반환환다.
+
+#### **NATURAL JOIN**
+
+NATURAL JOIN은 두 테이블 간의 동일한 이름을 갖는 모든 칼럼에 대해 EQUI(=) JOIN을 수행한다. NATURAL JOIN이 명시되면, 추가로 USING 조건절, ON 조건절, WHERE절에서 JOIN 조건을 정의할 수 없다. 그리고 SQL Server에서는 지원하지 않는 기능이다. JOIN에 사용된 칼럼들은 같은 데이터 유형이어야 하며, ALIAS나 테이블명과 같은 접두사를 붙일 수 없다.
+
+#### **USING 조건절**
+
+USING 조건절을 이용한 EQUI JOIN에서도 NATURAL JOIN과 마찬가지로 JOIN 칼럼에 대해서는 ALIAS나 테이블 이름과 같은 접두사를 붙일 수 없다.
+
+#### **ON 조건절**
+
+JOIN 서술부(ON 조건절)와 비 JOIN 서술부(WHERE 조건절)를 분리하여 이해하기 쉬우며, 칼럼명이 다르더라도 JOIN 조건을 사용할 수 있는 장점이 있다.
+
+#### **CROSS JOIN**
+
+E.F.CODD 박사가 언급한 일반 집합 연산자의 PRODUCT의 개념으로 테이블 간 JOIN 조건이 없는 경우 생길 수 있는 모든 데이터의 조합을 말한다. 결과는 양쪽 집합의 M*N 건의 데이터 조합이 발생한다.<br/>
+NATURAL JOIN의 경우 WHERE절에서 JOIN 조건을 추가할 수 없지만, CROSS JOIN의 경우 WHERE절에 JOIN 조건을 추가할 수 있다. 그러나, 이 경우는 CROSS JOIN이 아니라 INNER JOIN과 같은 결과를 얻기 때문에 CROSS JOIN을 사용하는 의미가 없어지므로 권고하지 않는다.
+
+#### **OUTER JOIN**
+
+INNER(내부) JOIN과 대비하여 OUTER(외부) JOIN이라고 불리며, JOIN 조건에서 동일한 값이 없는 행도 반환할 때 사용할 수 있다. ORACLE에서는 OUTER JOIN 구분을 (+) 기호를 사용하여 처리할 수도 있으며, 이를 ANSI 문장으로 변경하기 위해서는 INNER쪽 테이블에 조건절을 ON절과 함께 위치시켜야 정상적인 OUTER JOIN을 수행할 수 있다.
+
+#### **LEFT OUTER JOIN**
+
+조인 수행 시 먼저 표기된 좌측 테이블에 해당하는 데이터를 먼저 읽은 후, 나중 표기된 우측 테이블에서 JOIN 대상 데이터를 읽어 온다. 즉, Table A와 B가 있을 때(Table 'A'가 기준이 됨), A와 B를 비교해서 B의 JOIN 칼럼에서 같은 값이 있을 때 그 해당 데이터를 가져오고, B의 JOIN 칼럼에서 같은 값이 없는 경우에는 B 테이블에서 가져오는 칼럼들은 NULL 값으로 채운다.
+
+#### **RIGHT OUTER JOIN**
+
+조인 수행 시 LEFT JOIN과 반대로 우측 테이블이 기준이 되어 결과를 생성한다. 즉, Table A와 B가 있을 때(Table 'B'가 기준이 됨), A와 B를 비교해서 A의 JOIN 칼럼에서 같은 값이 있을 때 그 해당 데이터를 가져오고, A의 JOIN 칼럼에서 같은 값이 없는 경우에는 A 테이블에서 가져오는 칼럼들은 NULL 값으로 채운다.
+
+#### **FULL OUTER JOIN**
+
+조인 수행 시 좌측, 우측 테이블의 모든 데이터를 읽어 JOIN하여 결과를 생성한다. 즉, Table A와 B가 있을 때(Table 'A', 'B' 모두 기준이 됨), RIGHT OUTER JOIN과 LEFT OUTER JOIN의 결과를 합집합으로 처리한 결과와 동일하다.
+
+### **집합 연산자(SET OPERATOR)**
+
+#### **집합 연산자의 종류**
+
+| **집합 연산자** | **연산자의 의미**                                                                                                                                                                                                                                                                                       |
+| :-------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+|      UNION      | 여러 개의 SQL문의 결과에 대한 합집합으로 결과에서 모든 중복된 행은 하나의 행으로 만든다.                                                                                                                                                                                                                |
+|    UNION ALL    | 여러 개의 SQL문의 결과에 대한 합집합으로 중복된 행도 그대로 결과로 표시된다. 즉, 단순히 결과만 합쳐놓은 것이다. 일반적으로 여러 질의 결과 상호 배타적인(Exclusive)일 때 많이 사용한다. 개별 SQL문의 결과가 서로 중복되지 않는 경우, UNION과 결과가 동일하다. (결과의 정렬 순서에는 차이가 있을 수 있음) |
+|    INTERSECT    | 여러 개의 SQL문의 결과에 대한 교집합니다. 중복된 행은 하나의 행으로 만든다.                                                                                                                                                                                                                             |
+|     EXCEPT      | 앞의 SQL문의 결과에서 뒤의 SQL문의 결과에 대한 차집합이다. 중복된 행은 하나의 행으로 만든다.(일부 데이터베이스는 MINUS를 사용함)                                                                                                                                                                        |
+
+- EXCEPT는 차집합에 대한 연산이므로 NOT IN 또는 NOT EXISTS로 대체하여 처리가 가능하다.
+
+#### **집합 연산자를 사용하여 만들어지는 SQL문의 형태**
+
+```SQL
+SELECT 칼럼명 1, 칼럼명 2, ...
+FROM 테이블명 1
+[WHERE 조건식]
+[[GROUP BY 칼럼(Column)이나 표현식]
+[HAVING 그룹조건식]]
+집합 연산자
+SELECT 칼럼명 1, 칼럼명 2, ...
+FROM 테이블명 2
+[WHERE 조건식]
+[[GROUP BY 칼럼(Column)이나 표현식]
+[HAVING 그룹조건식]]
+[ORDER BY 1, 2 [ASC 또는 DESC]];
+→ 집합 연산에서 ORDER BY는 집합 연산을 적용한 최종 결과에 대한 정렬 처리이므로 가장 마지막 줄에 한 번만 기술한다.
+```
+
+### **계층형 질의**
+
+테이블에 계층형 데이터가 존재하는 경우 데이터를 조회하기 위해서 계층형 질의(Hierarchical Query)를 사용한다. 계층형 데이터란 동일 테이블에 계층적으로 상위와 하위 데이터가 포함된 데이터를 말한다. 예를 듦어, 사원 테이블에서는 사원들 사이에 상위 사원(관리자)과 하위 사원 관계가 존재하고 조직 테이블에서는 조직들 사이에 상위 조직과 하위 조직 관계가 존재한다.
+
+#### **Oracle 계층형 질의**
+
+```SQL
+SELECT ···
+FROM 테이블
+WHERE condition AND condition ···
+START WITH condition
+CONNECT BY [NOCYCLE] condition AND condition ···
+[ORDER SIBLINGS BY column, column, ···]
+```
+
+- START WITH절은 계층 구조 전개의 시작 위치를 지정하는 구문이다. 즉, 루트 데이터를 지정한다.(액세스)
+- CONNECT BY절은 다음에 전개될 자식 데이터를 지정하는 구문다. 자식 데이터는 CONNECT BY절에 주어진 조건을 만족해야 한다.(조인)
+- PRIOR: CONNECT BY절에 사용되며, 현재 읽은 칼럼을 지정한다. PRIOR 자식 = 부모 형태를 사용하면 계층 구조에서 부모 데이터에서 자식 데이터(부모 → 자식)방향으로 순방향 전개를 한다. 그리고 PRIOR 부모 = 자식 형태를 사용하면 반대로 자식 데이터에서 부모 데이터(자식 → 부모) 방향으로 전개하는 역방향 전개를 한다. SELECT, WHERE 절에서는 사용할 수 있다.
+- NOCYCLE : 데이터를 전개하면서 이미 나타났던 동일한 데이터가 전개 중에 다시 나타난다면 이것을 가리켜 사이클(Cycle)이 형성되었다라고 말한다. 사이클이 발생한 데이터는 런타임오류가 발생한다. 그렇지만 NOCYCLE 를 추가하면 사이클이 발생한 이후의 데이터는 전개하지 않는다.
+- ORDER SIBLINGS BY : 형제 노드(동일 LEVEL) 사이에서 정렬을 수행한다.
+- WHERE : 모든 전개를 수행한 후에 지정된 조건을 만족하는 데이터만 추출한다.(필터링)
