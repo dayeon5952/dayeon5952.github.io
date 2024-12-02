@@ -1,1 +1,6 @@
+---
+permalink: /abs.txt
+# The google adsense rules
+---
+
 google.com, pub-9825384384330115, DIRECT, f08c47fec0942fa0
