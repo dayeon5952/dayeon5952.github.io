@@ -2,7 +2,7 @@
 title: "[SQL] SQL 기본 및 활용 2"
 date: 2024-11-25 23:57:21 +09:00
 categories: [SQL]
-tags: [SQL]
+tags: [SQL, SQL 활용, 일반 집합 연삱, 순수 관계 연산자, FROM절 JOIN 형태, 집합 연산자, SET OPERATOR, 계층형 질의]
 ---
 ## **SQL 활용**
 

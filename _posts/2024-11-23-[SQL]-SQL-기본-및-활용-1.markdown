@@ -2,7 +2,7 @@
 title: "[SQL] SQL 기본 및 활용 1"
 date: 2024-11-23 00:46:53 +09:00
 categories: [SQL]
-tags: [SQL]
+tags: [SQL, SQL 기본, DDL, DML, 테이블 삭제비교, DCL, TCL, WHERE, NULL, 집계 함수, ORDER BY절, 함수]
 ---
 ## **SQL 기본**
 

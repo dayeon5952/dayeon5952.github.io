@@ -2,7 +2,7 @@
 title: "[Javascript] 자바스크립트의 비동기"
 date: 2024-08-22 23:12:08 +09:00
 categories: [Javascript]
-tags: [Javascript, 자바스크립트, 비동기, 동기]
+tags: [Javascript, 자바스크립트, 비동기, 동기, 자바스크립트에서의 비동기 처리]
 ---
 
 ## **자바스크립트의 동기와 비동기**
