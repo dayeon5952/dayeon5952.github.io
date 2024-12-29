@@ -3,6 +3,19 @@
   "blanks-around-fences": false,
   "line-length": false,
   "no-inline-html": {
-    "allowed_elements": ["kbd", "sub"]
-  }
+    "allowed_elements": [
+      "kbd",
+      "sub",
+      "span",
+      "br",
+      "table",
+      "thead",
+      "tr",
+      "th",
+      "tbody",
+      "td",
+      "div"
+    ]
+  },
+  "siblings_only": true
 }
