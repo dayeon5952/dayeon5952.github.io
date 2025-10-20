@@ -1,7 +1,7 @@
 ---
 title: "[HTML] 시맨틱 태그(Semantic Tag)"
 date: 2024-08-20 21:18:52 +09:00
-categories: [HTML]
+categories: [Frontend]
 tags: [HTML, 시맨틱 태그, Semantic Tag]
 ---
 

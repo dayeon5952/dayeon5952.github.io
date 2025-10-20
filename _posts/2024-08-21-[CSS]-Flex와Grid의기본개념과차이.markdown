@@ -1,7 +1,7 @@
 ---
 title: "[CSS] Flex와 Grid의 기본 개념과 차이"
 date: 2024-08-21 22:58:22 +09:00
-categories: [CSS]
+categories: [Frontend]
 tags: [CSS, Flex, Grid, Flex와 Grid 차이점]
 ---
 

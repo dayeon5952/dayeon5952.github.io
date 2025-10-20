@@ -1,7 +1,7 @@
 ---
-title: "[패키지 매니저] npm, pnpm, yarn, yarn-berry"
+title: "[패키지매니저] npm, pnpm, yarn, yarn-berry"
 date: 2024-12-29 17:00:7 +09:00
-categories: [패키지 매니저]
+categories: [Frontend]
 tags: [패키지매니저, npm, pnpm, yarn, yarn-berry]
 ---
 ## **Package Manager**
@@ -14,7 +14,7 @@ tags: [패키지매니저, npm, pnpm, yarn, yarn-berry]
 
 ## **대표적인 Package Manager 3가지**
 
-가장 많이 사용되는 패키지 매니저로는 <span style="background-color: #fff5b1; font-weight: 700;">npm, yarn, pnpm</span>이 있다.
+가장 많이 사용되는 패키지 매니저로는 `<span style="background-color: #fff5b1; font-weight: 700;">`npm, yarn, pnpm이 있다.
 
 ### **1️⃣ npm(Node Package Manager)**
 
@@ -27,15 +27,17 @@ npm의 가장 큰 특징이자 단점은, 아무래도 npm이 패키지 매니�
 다만, 앞서 말했듯이 **npm의 경우 패키지들을 서로 의존하도록 하기 때문에 만약 하나의 문제가 발생한다면 다른 것들에도 문제가 발생할 수 있다는 단점**이 있다. 따라서, 이 부분을 관리하기 위해서는 package.json이 필요하다.
 
 **[사용 방법]**
+
 <!-- 코드 블럭 width 100% -->
+
 <div style="width:100%; font-size: .85rem; padding: 1em; word-break: break-word; border-radius: 4px; background-color: var(--inline-code-bg); color: var(--highlighter-rouge-color); margin: 0.5em 0px; font-family: var(--bs-font-monospace);">npm init</div>
 
 해당 명령어를 입력하여 npm을 사용할 수 있는 초기 환경을 설정해주면 된다.
 
-> ```npm install 주소``` : 특정 저장소 내 패키지 설치. 주로 github을 이와 같이 설치<br/>
-> ```npm install package_name -g``` : 글로벌 설치. 로컬의 다른 프로젝트도 이 패키지 사용 가능<br/>
-> ```npm update``` : 설치한 패키지들 업데이트<br/>
-> ```npm dedupe``` : 중복 설치된 패키지들 정리해주는 명령어<br/>
+> ``npm install 주소`` : 특정 저장소 내 패키지 설치. 주로 github을 이와 같이 설치`<br/>`
+> ``npm install package_name -g`` : 글로벌 설치. 로컬의 다른 프로젝트도 이 패키지 사용 가능`<br/>`
+> ``npm update`` : 설치한 패키지들 업데이트`<br/>`
+> ``npm dedupe`` : 중복 설치된 패키지들 정리해주는 명령어`<br/>`
 
 ### **2️⃣ pnpm(performant npm)**
 
@@ -49,16 +51,18 @@ pnpm의 경우에는 프로젝트별로 node_modules에 매번 패키지를 설�
 
 **[사용 방법]**
 
-npm을 통해 먼저 설치를 해야 한다. pnpm CLI는 ```pnpm```와 ```pnpm.exe```의 두 가지 패키지를 제공한다.
+npm을 통해 먼저 설치를 해야 한다. pnpm CLI는 ``pnpm``와 ``pnpm.exe``의 두 가지 패키지를 제공한다.
+
 <!-- 코드 블럭 width 100% -->
+
 <div style="width:100%; font-size: .85rem; padding: 1em; word-break: break-word; border-radius: 4px; background-color: var(--inline-code-bg); color: var(--highlighter-rouge-color); margin: 0.5em 0px; font-family: var(--bs-font-monospace);">npm install -g pnpm</div>
 or
 <!-- 코드 블럭 width 100% -->
 <div style="width:100%; font-size: .85rem; padding: 1em; word-break: break-word; border-radius: 4px; background-color: var(--inline-code-bg); color: var(--highlighter-rouge-color); margin: 0.5em 0px; font-family: var(--bs-font-monospace);">npm install -g @pnpm/exe</div>
 
-> ```pnpm install``` : 전체 설치<br/>
-> ```pnpm add <'pkg'>``` : 패키지 설치<br/>
-> ```pnpm <'cmd'>``` : pnpm start, pnpm dev 등 cmd 명령어 사용
+> ``pnpm install`` : 전체 설치`<br/>`
+> ``pnpm add <'pkg'>`` : 패키지 설치`<br/>`
+> ``pnpm <'cmd'>`` : pnpm start, pnpm dev 등 cmd 명령어 사용
 
 ### **3️⃣ yarn(Yet Another Resource Negotiator)**
 
@@ -77,39 +81,43 @@ npm은 보안의 문제가 큰 단점이었는데 **yarn에서는 npm의 취약�
 **[사용 방법]**
 
 yarn의 경우 npm과는 달리 별도의 설치가 필요하기 때문에 npm을 통해 먼저 설치를 해야 한다.
+
 <!-- 코드 블럭 width 100% -->
+
 <div style="width:100%; font-size: .85rem; padding: 1em; word-break: break-word; border-radius: 4px; background-color: var(--inline-code-bg); color: var(--highlighter-rouge-color); margin: 0.5em 0px; font-family: var(--bs-font-monospace);">npm install -g yarn</div>
 컴퓨터 모두에서 yarn을 사용할 수 있도록 global 키워드를 사용해서 설치를 해준다. 설치 후에는 <span style="background-color:#fff5b1; font-weight: 700;">yarn, yarn init</span> 명령어를 통해서 yarn 폴더를 생성한 후 설정을 해주면 된다.
 
-> ```yarn add 주소``` : 특정 저장소 내 패키지 설치. 주로 github을 이와 같이 설치<br/>
-> ```yarn global add package_name``` : 글로벌 설치. 로컬의 다른 프로젝트도 이 패키지 사용 가능<br/>
-> ```yarn upgrade``` : 설치한 패키지들 업데이트<br/>
-> ```yarn dedupe``` : 중복 설치된 패키지들 정리해주는 명령어
+> ``yarn add 주소`` : 특정 저장소 내 패키지 설치. 주로 github을 이와 같이 설치`<br/>`
+> ``yarn global add package_name`` : 글로벌 설치. 로컬의 다른 프로젝트도 이 패키지 사용 가능`<br/>`
+> ``yarn upgrade`` : 설치한 패키지들 업데이트`<br/>`
+> ``yarn dedupe`` : 중복 설치된 패키지들 정리해주는 명령어
 
 ### **Yarn Berry**
 
-Yarn Berry는 Node.js를 위한 새로운 패키지 관리 시스템으로, 2020년에 페이스북에서 발표한 yarn의 두 번째 버전이다. <span style="background-color:#fff5b1; font-weight:700;">Plug'n'Play(PnP)</span> 라고 불리는 새로운 패키지 관리 방식이다.
+Yarn Berry는 Node.js를 위한 새로운 패키지 관리 시스템으로, 2020년에 페이스북에서 발표한 yarn의 두 번째 버전이다. `<span style="background-color:#fff5b1; font-weight:700;">`Plug'n'Play(PnP) 라고 불리는 새로운 패키지 관리 방식이다.
 
 기존의 npm의 문제점인 비효율적인 의존성 검색, 환경에 따라 달라지는 동작, 비효율적인 설치, 유령 의존성(Phantom Dependency)을 해결하기 위한 새로운 패키지 매니저이다.
 
-**Plug'n'Play(PnP)**는 **패키지를 프로젝트의 ```node_modules``` 디렉토리에 저장하지 않는다.** 패키지들에 대한 의존성 정보는 **.zip** 파일로 압축되어 ```.yarn/cache``` 폴더에 저장하고, 이를 찾기 위한 정보를 ```.pnp.cjs``` 파일에 기록한다.
+**Plug'n'Play(PnP)**는 **패키지를 프로젝트의 ``node_modules`` 디렉토리에 저장하지 않는다.** 패키지들에 대한 의존성 정보는 **.zip** 파일로 압축되어 ``.yarn/cache`` 폴더에 저장하고, 이를 찾기 위한 정보를 ``.pnp.cjs`` 파일에 기록한다.
 
-```.pnp.cjs```를 이용함으로써 별도의 디스크 I/O 작업 없이도 패키지의 위치를 정확히 알 수 있기 때문에 시간도 단축되고, 중복 설치를 방지하며, ```node_modules```를 만들고 패키지들을 호이스팅시킬 필요가 없다.
+``.pnp.cjs``를 이용함으로써 별도의 디스크 I/O 작업 없이도 패키지의 위치를 정확히 알 수 있기 때문에 시간도 단축되고, 중복 설치를 방지하며, ``node_modules``를 만들고 패키지들을 호이스팅시킬 필요가 없다.
 
-장점으로는 **zero-install**로 ```git clone``` 이후 **별도의 설치 필요 없이** (**```yarn install``` 명령어 없이**) 바로 사용할 수 있게 되었고, 브랜치 변경 시에도 해당 브랜치에 이미 필요한 의존성 패키지가 존재하므로 ```yarn install``` 없이 프로젝트 실행이 가능하고 **CI**에서 의존성 설치하는 시간을 절약할 수 있다. 또한, 각 패키지가 zip 아카이브로 압축되어 있으므로, 스토리지 용량을 크게 아낄 수 있고, 의존성을 구성하는 파일의 수가 많지 않으므로 변경 사항을 감지하거나 전체 의존성을 삭제하는 작업이 빠르다.
+장점으로는 **zero-install**로 ``git clone`` 이후 **별도의 설치 필요 없이** (**``yarn install`` 명령어 없이**) 바로 사용할 수 있게 되었고, 브랜치 변경 시에도 해당 브랜치에 이미 필요한 의존성 패키지가 존재하므로 ``yarn install`` 없이 프로젝트 실행이 가능하고 **CI**에서 의존성 설치하는 시간을 절약할 수 있다. 또한, 각 패키지가 zip 아카이브로 압축되어 있으므로, 스토리지 용량을 크게 아낄 수 있고, 의존성을 구성하는 파일의 수가 많지 않으므로 변경 사항을 감지하거나 전체 의존성을 삭제하는 작업이 빠르다.
 
 **[사용 방법]**
 
 yarn 설치 후 버전 변경을 해야 한다.
+
 <div style="width:100%; font-size: .85rem; padding: 1em; word-break: break-word; border-radius: 4px; background-color: var(--inline-code-bg); color: var(--highlighter-rouge-color); margin: 0.5em 0px; font-family: var(--bs-font-monospace);">npm install -g yarn</div>
 <div style="width:100%; font-size: .85rem; padding: 1em; word-break: break-word; border-radius: 4px; background-color: var(--inline-code-bg); color: var(--highlighter-rouge-color); margin: 0.5em 0px; font-family: var(--bs-font-monospace);">cd ../path/to/some-package</div>
 <div style="width:100%; font-size: .85rem; padding: 1em; word-break: break-word; border-radius: 4px; background-color: var(--inline-code-bg); color: var(--highlighter-rouge-color); margin: 0.5em 0px; font-family: var(--bs-font-monospace);">yarn set version berry</div>
 
-버전 변경 후 ```node_modules```와 ```package.lock.json``` 삭제를 해야한다.
+버전 변경 후 ``node_modules``와 ``package.lock.json`` 삭제를 해야한다.
+
 <div style="width:100%; font-size: .85rem; padding: 1em; word-break: break-word; border-radius: 4px; background-color: var(--inline-code-bg); color: var(--highlighter-rouge-color); margin: 0.5em 0px; font-family: var(--bs-font-monospace);">rm -rf node_modules</div>
 <div style="width:100%; font-size: .85rem; padding: 1em; word-break: break-word; border-radius: 4px; background-color: var(--inline-code-bg); color: var(--highlighter-rouge-color); margin: 0.5em 0px; font-family: var(--bs-font-monospace);">rm -rf package.lock.json</div>
 
-```.yarnrc.yml``` 파일에서 ```node:Linker: node-modules```를 삭제하고 다시 ```yarn install``` 후 ```.gitignore``` 설정을 해야한다.
+``.yarnrc.yml`` 파일에서 ``node:Linker: node-modules``를 삭제하고 다시 ``yarn install`` 후 ``.gitignore`` 설정을 해야한다.
 
 ```text
 .yarn/*
@@ -121,8 +129,8 @@ yarn 설치 후 버전 변경을 해야 한다.
 !.yarn/versions
 ```
 
-> **유령 의존성**<br/>
-> 중복해서 설치되는 ```node_modules```를 아끼기 위해 호이스팅 기법을 사용한다.<br/>
+> **유령 의존성**`<br/>`
+> 중복해서 설치되는 ``node_modules``를 아끼기 위해 호이스팅 기법을 사용한다.`<br/>`
 > 그로 인해 직접 의존하고 있지 않은 라이브러리를 ``require()``할 수 있는 현상
 
 ## **어떤 패키지 매니저를 사용해야할지**

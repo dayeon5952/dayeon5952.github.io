@@ -1,10 +1,9 @@
 ---
-title: "[Typescript] JavaScript와 TypeScript"
+title: "[Frontend] JavaScript와 TypeScript"
 date: 2024-08-30 23:12:08 +09:00
-categories: [Typescript]
+categories: [Frontend]
 tags: [Typescript, Javascript]
 ---
-
 ### **JavaScript와 TypeScript**
 
 - TypeScript는 JavaScript 기반의 언어
