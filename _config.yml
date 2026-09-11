@@ -242,3 +242,6 @@ plugins:
 feed:
   path: feed.xml
   post_limit: 5
+  categories_limit: 5
+  excerpt_only: true
+  use_post_date_in_filename: false
