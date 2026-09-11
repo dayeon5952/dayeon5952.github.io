@@ -232,3 +232,13 @@ highlighter: rouge
 lsi: false
 excerpt_separator: "\n\n"
 incremental: false
+
+# 플러그인 섹션에 jekyll-feed 추가
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Feed 설정
+feed:
+  path: feed.xml
+  post_limit: 5
