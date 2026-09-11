@@ -26,3 +26,6 @@ package-lock.json
 # Misc
 #_sass/dist
 #assets/js/dist
+
+GIT_BASED_DATE_IMPLEMENTATION.md
+IMPLEMENTATION_COMPLETED.md
